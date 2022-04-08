@@ -1,0 +1,10 @@
+# Exclude IDE files
+.idea/
+
+cv.aux
+cv.fdb_latexmk
+cv.fls
+cv.log
+cv.out
+cv.synctex.gz
+cv.xdv
