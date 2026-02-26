@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(where:*)",
+      "Bash(scoop list:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(git status:*)"
+    ]
+  }
+}

@@ -1,0 +1,244 @@
+%-------------------------------------------------------------------------------
+%	SECTION TITLE
+%-------------------------------------------------------------------------------
+\cvsection{Experience}
+
+%-------------------------------------------------------------------------------
+%	CONTENT
+%-------------------------------------------------------------------------------
+\begin{cventries}
+
+%---------------------------------------------------------
+% Salesforce
+%---------------------------------------------------------
+\cventry
+{Principal Backend Software Engineer} % Job title
+{Salesforce} % Organization
+{Bellevue WA, USA} % Location
+{Aug 2021 - Present} % Date(s)
+{
+  \begin{cvitems} % Description(s) of tasks/responsibilities
+    \item
+    {
+      Stabilized AsyncAPI processing pipeline — reduced noisy-neighbor incidents by 99\% and decreased SQL Server resource utilization by 75\%.
+    }
+    \item
+    {
+      Optimized AsyncAPI queueing internals — doubled request throughput and reduced processing latency 4x, enabling millions of enqueued requests to be processed efficiently.
+    }
+    \item
+    {
+      Designed an automated throttling algorithm using probabilistic programming and surrogate models to guarantee fair resource sharing across concurrent workloads without manual intervention.
+    }
+    \item
+    {
+      Led the migration of Salesforce Marketing Cloud from legacy .NET Framework to .NET 8. Personally ported the majority of initial projects, establishing the critical mass of patterns and infrastructure. Developed AI-assisted tooling to automate the remaining conversions.
+    }
+    \item
+    {
+      Mentored engineers across teams in managed code debugging, SQL Server performance tuning, and production incident analysis.
+    }
+    \item
+    {
+      Technologies:\\
+      {C\#}, .NET 8, SQL Server, WinDbg.\\
+    }
+  \end{cvitems}
+}
+
+%---------------------------------------------------------
+% Microsoft Redmond
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\cventry
+{Principal Software Engineer} % Job title
+{Microsoft Corporation - SQL Server} % Organization
+{Redmond WA, USA} % Location
+{Oct 2013 - Aug 2021} % Date(s)
+{
+  \begin{cvitems} % Description(s) of tasks/responsibilities
+    \item
+    {
+      Integrated \href{https://github.com/microsoft/mlos}{MLOS} with SQL Server to enable database engine performance optimization. Co-authored \href{https://arxiv.org/pdf/2006.02155.pdf}{DEEM 2020 paper}.
+    }
+    \item
+    { 
+      Built org-wide debugging infrastructure for SQL Server engine — auto-generates {C\#} debugging scripts from C++ PDB symbols, replacing legacy debugging tools. Adopted across the SQL Server organization.
+    }
+    \item
+    {
+      \href{https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql/introduction-to-sql-server-clr-integration}{SqlCLR Host} maintainer — the .NET runtime integration layer within SQL Server engine.
+    }
+    \item
+    {
+      Implemented SQL Server \href{https://docs.microsoft.com/en-us/sql/big-data-cluster/concept-data-pool}{big data cluster data pools}.
+    }
+    \item
+    {
+      Technical lead on the cross-org \href{https://docs.microsoft.com/en-us/sql/advanced-analytics/concepts/extensibility-framework}{Extensibility} team. Ported the SQL Satellite framework from Windows to Linux, including the SQL Server type system. Built process isolation using Linux namespaces and cgroups.
+    }
+    \item
+    {
+      Enabled \href{https://cloudblogs.microsoft.com/sqlserver/2016/12/16/sql-server-on-linux-how-introduction}{Visual Studio remote debugging} for .NET applications running on SQL Server's user-mode NT kernel implementation on Linux.
+    }
+    \item
+    {
+      Contributed to the SQL Server 2016 \href{https://learn.microsoft.com/en-gb/archive/blogs/psssql/sql-2016-it-just-runs-faster-announcement}{``It Just Runs Faster''} initiative — implemented \href{https://blogs.msdn.microsoft.com/bobsql/2016/06/03/sql-2016-it-just-runs-faster-spatial-index-builds-faster}{native spatial improvements}, \href{https://blogs.msdn.microsoft.com/bobsql/2016/06/03/sql-2016-it-just-runs-faster-tvps-with-spatial-columns}{TVPs}, and \href{https://blogs.msdn.microsoft.com/psssql/2016/05/18/sql-2016-it-just-runs-faster-xevent-linq-reader/}{XEvent LINQ reader} optimizations.
+    }
+    \item
+    {
+      Implemented SSMS \href{https://www.sqlshack.com/how-to-compare-query-execution-plans-in-sql-server-2016}{compare plans} feature and new \href{https://www.dotnine.net/ssms-preview-plan-comparison-tool-and-plan-viewer-optimizations}{plan layout algorithm}.
+    }
+    \item
+    {
+      Technologies: \\
+      C++, {C\#}, NetFX, NetCore, gRPC, WinDbg, WPF. \\
+    }
+  \end{cvitems}
+}
+
+%---------------------------------------------------------
+\cventry
+{Software Engineer in Test} % Job title
+{Microsoft Corporation - Azure Networking} % Organization
+{Dublin, Ireland → Redmond WA, USA} % Location
+{May 2009 - Oct 2013} % Date(s)
+{
+  \begin{cvitems} % Description(s) of tasks/responsibilities
+    \item
+    {
+      Designed test architecture for Azure DNS service.
+      Developed RCES – a remote code execution and code injection framework – to simplify distributed testing and enable fault injection in heterogeneous environments.
+    }
+    \item
+    {
+      Designed and implemented deployment service for PaaS and IaaS tenants.
+      Created new test framework - Remote Cluster Repository.
+    }
+    \item
+    {
+      Designed and implemented code coverage collection for SLB (Software Load Balancer).
+    }
+    \item
+    {
+      Technologies: \\
+      {C\#}, WCF, WinDbg, Detour. \\
+    }
+  \end{cvitems}
+}
+
+%---------------------------------------------------------
+\cventry
+{Software Engineer} % Job title
+{Microsoft Corporation - Windows Phone 7} % Organization
+{Dublin, Ireland} % Location
+{May 2008 - May 2009} % Date(s)
+{
+  \begin{cvitems} % Description(s) of tasks/responsibilities
+    \item
+    {
+      Implemented network traffic monitoring and cost estimation engine for Windows Phone data plan management, including NDIS driver-level components.
+    }
+    \item
+    {
+      Technologies:\\
+      C++, Windows Mobile, NDIS LWF driver. \\
+    }
+  \end{cvitems}
+}
+
+%---------------------------------------------------------
+% EMCC
+%---------------------------------------------------------
+\cventry
+{Software Engineer} % Job title
+{EMCC Software Ltd} % Organization
+{Manchester, UK} % Location
+{Jun 2007 - May 2008} % Date(s)
+{
+  \begin{cvitems} % Description(s) of tasks/responsibilities
+    \item
+    {
+      Developed BlackBerry push email client for Sony Ericsson mobile phones.
+    }
+    \item
+    {
+      Technologies:\\
+      C++, Symbian SDK, UIQ 3.0 \\
+    }
+  \end{cvitems}
+}
+
+%---------------------------------------------------------
+% Ideal Host
+%---------------------------------------------------------
+\cventry
+{Software Engineer} % Job title
+{Ideal Host Poland} % Organization
+{Gdansk, Poland} % Location
+{Jul 2005 - May 2007} % Date(s)
+{
+  \begin{cvitems} % Description(s) of tasks/responsibilities
+    \item
+    {
+      Architected and led development of a line-of-business system for the UK Joint Industry Board for Plumbers.
+    }
+    \item
+    {
+      Technologies:\\
+      {C\#}, .NET, Windows Forms, SQL Server. \\
+    }
+  \end{cvitems}
+}
+
+%---------------------------------------------------------
+% Axiom Software
+%---------------------------------------------------------
+\cventry
+{Co-Founder} % Job title
+{Axiom Software} % Organization
+{Gdansk, Poland} % Location
+{Jan 2004 - Jul 2005} % Date(s)
+{
+  \begin{cvitems} % Description(s) of tasks/responsibilities
+    \item
+    {
+      Built and shipped a sales management platform end-to-end — from architecture through sales and marketing — deployed to several food distribution companies with full ERP integration.
+    }
+    \item
+    {
+      Technologies:\\
+      C++, {C\#}, .NET Framework, SQL Server, SQL Server CE. \\
+    }
+  \end{cvitems}
+}
+
+%---------------------------------------------------------
+% Ivo
+%---------------------------------------------------------
+\cventry
+{Software Developer} % Job title
+{IVO Software (now Amazon Text to Speech)} % Organization
+{Gdansk, Poland} % Location
+{Aug 2001 - Dec 2003} % Date(s)
+{
+  \begin{cvitems} % Description(s) of tasks/responsibilities
+    \item
+    {
+      Ported the voice synthesizer (Polish language) to Symbian platform S60, implemented audio streaming.
+    }
+    \item
+    {
+      Designed and implemented UniSpeaker, an accessibility application for visually impaired users.
+    }
+    \item
+    {
+      Technologies:\\
+      C++, COM, x86 Assembler. \\
+    }
+  \end{cvitems}
+}
+
+%---------------------------------------------------------
+\end{cventries}
