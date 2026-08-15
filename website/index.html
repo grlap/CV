@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#07111d">
+    <meta name="color-scheme" content="dark">
+
+    <title>Greg Lapinski — Systems Foundations for the Agentic Era</title>
+    <meta name="description" content="Greg Lapinski is a principal software engineer building systems software, distributed infrastructure, database engines, and the foundations that make AI agents effective, observable, and safe.">
+    <meta name="author" content="Grzegorz (Greg) Lapinski">
+    <link rel="canonical" href="https://lapinski.io/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Greg Lapinski">
+    <meta property="og:title" content="Greg Lapinski — Systems foundations for the agentic era.">
+    <meta property="og:description" content="Systems programming, distributed systems, databases, and the infrastructure behind capable AI agents.">
+    <meta property="og:url" content="https://lapinski.io/">
+    <meta property="og:image" content="https://lapinski.io/og-card.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Greg Lapinski — systems foundations for the agentic era">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Greg Lapinski — Systems Foundations for the Agentic Era">
+    <meta name="twitter:description" content="Systems programming, distributed systems, databases, and agentic infrastructure.">
+    <meta name="twitter:image" content="https://lapinski.io/og-card.png">
+
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preload" href="photo.jpg" as="image" fetchpriority="high">
+    <link rel="stylesheet" href="styles.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Grzegorz Lapinski",
+      "alternateName": "Greg Lapinski",
+      "jobTitle": "Principal Software Engineer",
+      "url": "https://lapinski.io/",
+      "image": "https://lapinski.io/photo.jpg",
+      "email": "mailto:grzegorz.lapinski@live.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Redmond",
+        "addressRegion": "WA",
+        "addressCountry": "US"
+      },
+      "sameAs": [
+        "https://github.com/grlap",
+        "https://www.linkedin.com/in/grzegorz-lapinski/"
+      ],
+      "knowsAbout": [
+        "Systems programming",
+        "Distributed systems",
+        "Database engines",
+        "Agentic AI infrastructure",
+        "Model Context Protocol",
+        "Performance engineering",
+        "Runtime integration",
+        "Developer tools",
+        "C++",
+        "C#",
+        "Rust",
+        "Julia"
+      ]
+    }
+    </script>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to the work</a>
+
+    <div class="boot" aria-hidden="true">
+        <div class="boot__mark">GL</div>
+        <div class="boot__line"><span></span></div>
+        <div class="boot__label">Calibrating systems</div>
+    </div>
+
+    <div class="scroll-progress" aria-hidden="true"><span></span></div>
+    <div class="cursor-glow" aria-hidden="true"></div>
+
+    <header class="site-header" data-header>
+        <a class="brand" href="#top" aria-label="Greg Lapinski — back to top">
+            <span class="brand__mark">GL</span>
+            <span class="brand__name">Greg Lapinski</span>
+        </a>
+
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+            <span></span><span></span><span class="sr-only">Open menu</span>
+        </button>
+
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+            <a href="#foundations">Foundations</a>
+            <a href="#systems">Work</a>
+            <a href="#trajectory">Trajectory</a>
+            <a href="#lab">Projects</a>
+            <a class="nav-contact" href="#contact">Let’s talk <span>↘</span></a>
+        </nav>
+
+        <button class="motion-toggle" type="button" aria-pressed="false" aria-label="Pause page motion">
+            <span class="motion-toggle__icon" aria-hidden="true"><i></i><i></i></span>
+            <span class="motion-toggle__label">Pause motion</span>
+        </button>
+    </header>
+
+    <main id="main">
+        <section class="hero" id="top" aria-labelledby="hero-title">
+            <canvas class="system-field" id="system-field" aria-hidden="true"></canvas>
+            <div class="hero__grid" aria-hidden="true"></div>
+
+            <div class="hero__content shell">
+                <div class="hero__copy">
+                    <p class="eyebrow hero__eyebrow" data-reveal>
+                        Principal Software Engineer · systems foundations &amp; agentic infrastructure
+                    </p>
+
+                    <h1 id="hero-title" class="hero__title" aria-label="Systems foundations. Agentic era.">
+                        <span class="title-line"><span>Systems</span></span>
+                        <span class="title-line"><span>foundations.</span></span>
+                        <span class="title-line title-line--accent"><span>Agentic era.</span></span>
+                    </h1>
+
+                    <p class="hero__intro" data-reveal>
+                        I build runtimes, database engines, distributed backends, and developer
+                        infrastructure—then apply that systems depth to making AI agents capable,
+                        observable, and safe.
+                    </p>
+
+                    <div class="hero__actions" data-reveal>
+                        <a class="button button--signal magnetic" href="#foundations">
+                            <span>Explore the foundation</span><span aria-hidden="true">↓</span>
+                        </a>
+                        <a class="text-link" href="cv.pdf" download="Greg-Lapinski-CV.pdf">
+                            CV <span aria-hidden="true">↘</span>
+                        </a>
+                        <a class="text-link" href="cv-eu.pdf" download="Greg-Lapinski-CV-European-Markets.pdf" title="Includes recruitment data-processing consent">
+                            European markets CV <span aria-hidden="true">↘</span>
+                        </a>
+                    </div>
+
+                    <dl class="hero__facts" data-reveal>
+                        <div><dt>Foundation</dt><dd>Systems · databases</dd></div>
+                        <div><dt>Production</dt><dd>Distributed scale</dd></div>
+                        <div><dt>Frontier</dt><dd>Agentic AI</dd></div>
+                    </dl>
+                </div>
+
+                <figure class="portrait" data-tilt>
+                    <div class="portrait__backdrop" aria-hidden="true"></div>
+                    <div class="portrait__frame">
+                        <img src="photo.jpg" alt="Greg Lapinski on a snowy mountain summit" width="900" height="1600" fetchpriority="high">
+                        <div class="portrait__wash" aria-hidden="true"></div>
+                        <div class="portrait__scan" aria-hidden="true"></div>
+                    </div>
+                    <figcaption class="portrait__caption">
+                        <span><b>OUTSIDE THE SYSTEM</b> Perspective helps.</span>
+                        <span>WINTER <i></i> ABOVE THE CLOUD LAYER</span>
+                    </figcaption>
+                </figure>
+            </div>
+
+            <div class="hero__footer shell" aria-hidden="true">
+                <span>Scroll to inspect</span>
+                <div class="hero__scroll-line"><i></i></div>
+                <span>00 / 07</span>
+            </div>
+        </section>
+
+        <section class="depth section" id="foundations" aria-labelledby="foundations-title">
+            <div class="shell depth__layout">
+                <div class="depth__intro">
+                    <p class="kicker" data-reveal><span>01</span> Engineering foundation</p>
+                    <h2 id="foundations-title" data-reveal>Three disciplines.<br>One systems view.</h2>
+                    <p data-reveal>Systems programming, distributed systems, and databases are not separate lanes. The hardest work happens at their boundaries—and those same boundaries now determine whether AI agents can do durable work.</p>
+
+                    <div class="layer-detail" id="layer-detail" aria-live="polite" data-reveal>
+                        <span class="layer-detail__index">03 / 05</span>
+                        <h3>Databases</h3>
+                        <p>SQL Server internals, SqlCLR hosting, type systems, execution plans, indexing, and production data performance.</p>
+                    </div>
+                </div>
+
+                <div class="stack-stage" data-reveal>
+                    <div class="stack-stage__halo" aria-hidden="true"></div>
+                    <div class="stack-scene" role="group" aria-label="Engineering foundation and current frontier">
+                        <button class="stack-layer" type="button" data-layer="agentic" aria-pressed="false" aria-controls="layer-detail" style="--i: 0">
+                            <span>05</span><b>Agentic infrastructure</b><small>Navigation / orchestration / autonomous flow</small>
+                        </button>
+                        <button class="stack-layer" type="button" data-layer="distributed" aria-pressed="false" aria-controls="layer-detail" style="--i: 1">
+                            <span>04</span><b>Distributed systems</b><small>Queues / cloud / coordination</small>
+                        </button>
+                        <button class="stack-layer is-active" type="button" data-layer="database" aria-pressed="true" aria-controls="layer-detail" style="--i: 2">
+                            <span>03</span><b>Databases</b><small>Engines / SQL / state</small>
+                        </button>
+                        <button class="stack-layer" type="button" data-layer="systems" aria-pressed="false" aria-controls="layer-detail" style="--i: 3">
+                            <span>02</span><b>Systems programming</b><small>Runtimes / OS / concurrency</small>
+                        </button>
+                        <button class="stack-layer" type="button" data-layer="tools" aria-pressed="false" aria-controls="layer-detail" style="--i: 4">
+                            <span>01</span><b>Engineering tools</b><small>Debug / observe / automate</small>
+                        </button>
+                    </div>
+                    <p class="stack-stage__hint"><span>Move</span> to inspect the foundation</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="systems section" id="systems" aria-labelledby="systems-title">
+            <div class="shell">
+                <header class="section-heading">
+                    <p class="kicker" data-reveal><span>02</span> Selected systems</p>
+                    <h2 id="systems-title" data-reveal>Work below<br>the interface.</h2>
+                    <p class="section-heading__lead" data-reveal>
+                        The most consequential product work is often invisible.
+                        These are systems where architecture, debugging and delivery had to move together.
+                    </p>
+                </header>
+            </div>
+
+            <div class="case-grid">
+                    <article class="case case--queue" id="salesforce-asyncapi" aria-labelledby="salesforce-asyncapi-title" data-reveal>
+                        <header class="case__header">
+                            <p><span>01</span> Salesforce / AsyncAPI</p>
+                            <span>2021—Now</span>
+                        </header>
+                        <div class="case__visual queue-visual" aria-hidden="true">
+                            <svg viewBox="0 0 720 460" preserveAspectRatio="xMidYMid meet">
+                                <defs>
+                                    <linearGradient id="queue-governor" x1="0" y1="0" x2="1" y2="0">
+                                        <stop offset="0" stop-color="#ff5b45" stop-opacity=".55" />
+                                        <stop offset=".48" stop-color="#91c5f3" stop-opacity=".22" />
+                                        <stop offset="1" stop-color="#c8ff4d" stop-opacity=".62" />
+                                    </linearGradient>
+                                    <linearGradient id="queue-rail" x1="0" y1="0" x2="1" y2="0">
+                                        <stop offset="0" stop-color="#122c42" />
+                                        <stop offset="1" stop-color="#091724" />
+                                    </linearGradient>
+                                    <filter id="queue-glow" x="-100%" y="-100%" width="300%" height="300%">
+                                        <feGaussianBlur stdDeviation="4" result="blur" />
+                                        <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+                                    </filter>
+                                    <clipPath id="queue-lane-clip" clipPathUnits="userSpaceOnUse">
+                                        <rect width="274" height="38" rx="7" />
+                                    </clipPath>
+                                </defs>
+
+                                <g class="queue-waves">
+                                    <text class="queue-diagram__heading" x="28" y="36">BURSTY ARRIVAL</text>
+                                    <path class="queue-wave queue-wave--one" d="M28 145 C60 55 92 235 124 145 S188 55 220 145 S280 238 320 107" />
+                                    <path class="queue-wave queue-wave--two" d="M28 205 C60 127 92 283 124 205 S188 127 220 205 S280 283 320 185" />
+                                    <path class="queue-wave queue-wave--three" d="M28 260 C60 194 92 326 124 260 S188 194 220 260 S280 326 320 263" />
+                                    <path class="queue-wave queue-wave--four" d="M28 310 C60 258 92 362 124 310 S188 258 220 310 S280 362 320 341" />
+                                    <circle class="queue-impact queue-impact--one" cx="322" cy="107" r="5" />
+                                    <circle class="queue-impact queue-impact--two" cx="322" cy="185" r="5" />
+                                    <circle class="queue-impact queue-impact--three" cx="322" cy="263" r="5" />
+                                    <circle class="queue-impact queue-impact--four" cx="322" cy="341" r="5" />
+                                </g>
+
+                                <g class="queue-governor">
+                                    <rect class="queue-governor__glow" x="316" y="58" width="70" height="344" rx="18" />
+                                    <rect class="queue-governor__body" x="324" y="65" width="54" height="330" rx="14" />
+                                    <path class="queue-governor__spine" d="M351 86V374" />
+                                    <g class="queue-governor__ports">
+                                        <rect x="319" y="99" width="17" height="16" rx="3" /><rect x="366" y="99" width="17" height="16" rx="3" />
+                                        <rect x="319" y="177" width="17" height="16" rx="3" /><rect x="366" y="177" width="17" height="16" rx="3" />
+                                        <rect x="319" y="255" width="17" height="16" rx="3" /><rect x="366" y="255" width="17" height="16" rx="3" />
+                                        <rect x="319" y="333" width="17" height="16" rx="3" /><rect x="366" y="333" width="17" height="16" rx="3" />
+                                    </g>
+                                    <circle cx="351" cy="230" r="19" />
+                                    <path d="M341 230H361M351 220V240" />
+                                    <text x="351" y="281">FAIR</text>
+                                    <text x="351" y="296">CONTROL</text>
+                                </g>
+
+                                <g class="fair-queues">
+                                    <text class="queue-diagram__heading" x="410" y="36">ORDERED DISPATCH</text>
+                                    <g class="fair-queue fair-queue--one" transform="translate(410 88)">
+                                        <text x="0" y="-7">WORKLOAD 01</text><rect class="fair-queue__rail" width="274" height="38" rx="7" />
+                                        <g class="fair-queue__stream" clip-path="url(#queue-lane-clip)"><rect x="-42" y="11" width="14" height="16" /><rect x="-42" y="11" width="28" height="16" /><rect x="-42" y="11" width="19" height="16" /><rect x="-42" y="11" width="36" height="16" /><rect x="-42" y="11" width="23" height="16" /><rect x="-42" y="11" width="12" height="16" /></g>
+                                    </g>
+                                    <g class="fair-queue fair-queue--two" transform="translate(410 166)">
+                                        <text x="0" y="-7">WORKLOAD 02</text><rect class="fair-queue__rail" width="274" height="38" rx="7" />
+                                        <g class="fair-queue__stream" clip-path="url(#queue-lane-clip)"><rect x="-42" y="11" width="33" height="16" /><rect x="-42" y="11" width="16" height="16" /><rect x="-42" y="11" width="25" height="16" /><rect x="-42" y="11" width="12" height="16" /><rect x="-42" y="11" width="38" height="16" /><rect x="-42" y="11" width="20" height="16" /></g>
+                                    </g>
+                                    <g class="fair-queue fair-queue--three" transform="translate(410 244)">
+                                        <text x="0" y="-7">WORKLOAD 03</text><rect class="fair-queue__rail" width="274" height="38" rx="7" />
+                                        <g class="fair-queue__stream" clip-path="url(#queue-lane-clip)"><rect x="-42" y="11" width="21" height="16" /><rect x="-42" y="11" width="40" height="16" /><rect x="-42" y="11" width="15" height="16" /><rect x="-42" y="11" width="27" height="16" /><rect x="-42" y="11" width="18" height="16" /><rect x="-42" y="11" width="31" height="16" /></g>
+                                    </g>
+                                    <g class="fair-queue fair-queue--four" transform="translate(410 322)">
+                                        <text x="0" y="-7">WORKLOAD 04</text><rect class="fair-queue__rail" width="274" height="38" rx="7" />
+                                        <g class="fair-queue__stream" clip-path="url(#queue-lane-clip)"><rect x="-42" y="11" width="17" height="16" /><rect x="-42" y="11" width="30" height="16" /><rect x="-42" y="11" width="42" height="16" /><rect x="-42" y="11" width="14" height="16" /><rect x="-42" y="11" width="24" height="16" /><rect x="-42" y="11" width="35" height="16" /></g>
+                                    </g>
+                                </g>
+
+                                <text class="queue-diagram__note" x="28" y="425">UNEQUAL PRESSURE</text>
+                                <path class="queue-diagram__arrow" d="M241 421H477" />
+                                <text class="queue-diagram__note queue-diagram__note--fair" x="510" y="425">FAIR SERVICE</text>
+                            </svg>
+                        </div>
+                        <div class="case__copy">
+                            <p class="case__eyebrow">Shared infrastructure, made predictable</p>
+                            <h3 id="salesforce-asyncapi-title">Turn queue contention into fair flow.</h3>
+                            <p>Reworked pipeline and queue internals, then introduced probabilistic throttling so workloads share capacity fairly without manual intervention.</p>
+                            <ul class="tags" aria-label="Technologies"><li>C#</li><li>.NET 8</li><li>SQL Server</li><li>WinDbg</li></ul>
+                        </div>
+                    </article>
+
+                    <article class="case case--engine" id="sql-server" aria-labelledby="sql-server-title" data-reveal>
+                        <header class="case__header">
+                            <p><span>02</span> Microsoft / SQL Server</p>
+                            <span>2013—2021</span>
+                        </header>
+                        <div class="case__visual engine-isometric" aria-hidden="true">
+                            <svg viewBox="0 0 760 650" preserveAspectRatio="xMidYMid meet">
+                                <defs>
+                                    <linearGradient id="sql-layer" x1="0" y1="0" x2="1" y2="1">
+                                        <stop offset="0" stop-color="#ea3fc1" />
+                                        <stop offset="1" stop-color="#6f49d8" />
+                                    </linearGradient>
+                                    <linearGradient id="windows-layer" x1="0" y1="0" x2="1" y2="1">
+                                        <stop offset="0" stop-color="#ff6078" />
+                                        <stop offset="1" stop-color="#c946bd" />
+                                    </linearGradient>
+                                    <linearGradient id="pal-layer" x1="0" y1="0" x2="1" y2="1">
+                                        <stop offset="0" stop-color="#9b4fd6" />
+                                        <stop offset="1" stop-color="#6654db" />
+                                    </linearGradient>
+                                    <linearGradient id="host-layer" x1="0" y1="0" x2="1" y2="1">
+                                        <stop offset="0" stop-color="#6572dc" />
+                                        <stop offset="1" stop-color="#377fc6" />
+                                    </linearGradient>
+                                    <linearGradient id="linux-layer" x1="0" y1="0" x2="1" y2="1">
+                                        <stop offset="0" stop-color="#3379b2" />
+                                        <stop offset="1" stop-color="#2792bd" />
+                                    </linearGradient>
+                                    <marker id="iso-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                                        <path d="M0 0 10 5 0 10Z" fill="#8070df" />
+                                    </marker>
+                                    <marker id="iso-skip-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                                        <path d="M0 0 10 5 0 10Z" fill="#ff6078" />
+                                    </marker>
+                                </defs>
+                                <path class="iso-grid" d="M90 556 319 650 568 547 339 453M135 575 364 481M181 594 410 500M227 613 456 519M273 632 502 538M522 566 293 472M476 585 247 491M430 604 201 510M384 623 155 529" />
+
+                                <g class="sql-architecture__flow">
+                                    <path d="M320 128V140" marker-end="url(#iso-arrow)" />
+                                    <path d="M320 251V262" marker-end="url(#iso-arrow)" />
+                                    <path d="M320 380V387" marker-end="url(#iso-arrow)" />
+                                    <path d="M320 512V516" marker-end="url(#iso-arrow)" />
+                                </g>
+
+                                <g class="sql-architecture__layer sql-architecture__layer--sql">
+                                    <polygon class="arch-top" points="320,30 435,70 320,110 205,70" />
+                                    <polygon class="arch-left" points="205,70 320,110 320,128 205,88" />
+                                    <polygon class="arch-right" points="320,110 435,70 435,88 320,128" />
+                                    <text class="arch-title" x="320" y="67">SQL SERVER</text>
+                                </g>
+                                <g class="sql-architecture__layer sql-architecture__layer--windows">
+                                    <polygon class="arch-top" points="320,142 450,187 320,232 190,187" />
+                                    <polygon class="arch-left" points="190,187 320,232 320,251 190,206" />
+                                    <polygon class="arch-right" points="320,232 450,187 450,206 320,251" />
+                                    <text class="arch-title" x="320" y="184">WINDOWS LIBS</text>
+                                </g>
+                                <g class="sql-architecture__layer sql-architecture__layer--pal">
+                                    <polygon class="arch-top" points="320,262 460,311 320,360 180,311" />
+                                    <polygon class="arch-left" points="180,311 320,360 320,380 180,331" />
+                                    <polygon class="arch-right" points="320,360 460,311 460,331 320,380" />
+                                    <text class="arch-title" x="320" y="307">SQLPAL</text>
+                                </g>
+                                <g class="sql-architecture__layer sql-architecture__layer--host">
+                                    <polygon class="arch-top" points="320,387 470,439 320,491 170,439" />
+                                    <polygon class="arch-left" points="170,439 320,491 320,512 170,460" />
+                                    <polygon class="arch-right" points="320,491 470,439 470,460 320,512" />
+                                    <text class="arch-title" x="320" y="435">HOST EXTENSION</text>
+                                </g>
+                                <g class="sql-architecture__layer sql-architecture__layer--linux">
+                                    <polygon class="arch-top" points="320,516 480,571 320,626 160,571" />
+                                    <polygon class="arch-left" points="160,571 320,626 320,647 160,592" />
+                                    <polygon class="arch-right" points="320,626 480,571 480,592 320,647" />
+                                    <text class="arch-title" x="320" y="567">LINUX</text>
+                                </g>
+
+                                <g class="sql-architecture__annotations">
+                                    <g><path d="M435 70H500" /><text x="512" y="48">DATABASE ENGINE</text><text x="512" y="70">UNCHANGED WINDOWS CODE</text><text x="512" y="92">TENS OF MILLIONS OF LINES</text></g>
+                                    <g><path d="M450 187H500" /><text x="512" y="165">WIN32 + NT USER MODE</text><text x="512" y="187">MSXML · CLR · COM</text><text x="512" y="209">~81 MB OF LIBRARIES</text></g>
+                                    <g><path d="M460 311H500" /><text x="512" y="289">PLATFORM ABSTRACTION LAYER</text><text x="512" y="311">SOS + LIBRARY OS</text><text x="512" y="333">FROM MSR DRAWBRIDGE</text></g>
+                                    <g><path d="M470 439H500" /><text x="512" y="406">NATIVE LINUX PROCESS</text><text x="512" y="428">~50 HOST ABIs</text><text x="512" y="450">MEMORY · SYNC · DISK</text><text x="512" y="472">NETWORK I/O</text></g>
+                                    <g><path d="M480 571H500" /><text x="512" y="549">KERNEL + SYSCALLS</text><text x="512" y="571">UBUNTU · RHEL · SUSE</text><text x="512" y="593">DOCKER CONTAINERS</text></g>
+                                </g>
+                                <g class="sql-architecture__skip">
+                                    <path d="M205 88C125 142 111 250 177 311" marker-end="url(#iso-skip-arrow)" />
+                                    <text x="24" y="212">SOS DIRECT</text>
+                                    <text x="24" y="232">SKIPS WIN32</text>
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="case__copy case__copy--engine">
+                            <p class="case__eyebrow">Eight years inside the engine</p>
+                            <h3 id="sql-server-title">A database engine is a systems platform.</h3>
+                            <p>I worked across runtime hosting, Linux isolation, execution performance, diagnostics and product tooling—often owning the path from architecture to adoption.</p>
+                            <div class="engine-achievements" aria-label="SQL Server contributions">
+                                <div class="engine-achievement">
+                                    <span>01 / Linux engine port</span>
+                                    <h4>Technical lead, Linux Extensibility</h4>
+                                    <p>Ported SQL Satellite and the SQL Server type system to Linux; built namespace- and cgroup-based process isolation.</p>
+                                </div>
+                                <div class="engine-achievement">
+                                    <span>02 / Runtime hosting</span>
+                                    <h4>SQLCLR ownership</h4>
+                                    <p>Owned the .NET runtime integration layer hosted inside the SQL Server engine.</p>
+                                </div>
+                                <div class="engine-achievement engine-achievement--performance">
+                                    <span>03 / Performance</span>
+                                    <h4>19× · 15× · 10× · 2×</h4>
+                                    <p>Spatial, TVP, XEvent reader and 300M-row spatial-index improvements.</p>
+                                </div>
+                                <div class="engine-achievement">
+                                    <span>04 / Debugging platform</span>
+                                    <h4>Expert diagnosis, productized</h4>
+                                    <p>Generated C# tooling from C++ PDBs; adopted as the standard across SQL Server.</p>
+                                </div>
+                                <div class="engine-achievement">
+                                    <span>05 / Learned optimization</span>
+                                    <h4>MLOS / DEEM</h4>
+                                    <p>Collaborated on learned engine tuning and co-authored the DEEM 2020 paper.</p>
+                                </div>
+                                <div class="engine-achievement">
+                                    <span>06 / Product + tooling</span>
+                                    <h4>From remote debug to SSMS</h4>
+                                    <p>Remote .NET debugging on Linux, BDC data pools, compare plans and plan layout.</p>
+                                </div>
+                            </div>
+                            <ul class="tags" aria-label="Technologies"><li>C++</li><li>C#</li><li>Linux</li><li>.NET</li><li>gRPC</li><li>WinDbg</li><li>PowerShell</li></ul>
+                        </div>
+                    </article>
+            </div>
+        </section>
+
+        <section class="trajectory section" id="trajectory" aria-labelledby="trajectory-title">
+            <div class="shell">
+                <header class="section-heading section-heading--split">
+                    <div>
+                        <p class="kicker" data-reveal><span>03</span> Trajectory</p>
+                        <h2 id="trajectory-title" data-reveal>Twenty years<br>below the surface.</h2>
+                    </div>
+                    <p class="section-heading__aside" data-reveal>
+                        From speech synthesis on early mobile hardware to cloud-scale backend systems.
+                        Different surfaces; the same curiosity about what happens underneath.
+                        The newest stretch is different: with agents in the loop, it accelerates.
+                    </p>
+                </header>
+
+                <div class="career-map" data-career-map aria-hidden="true">
+                    <svg class="career-map__path" viewBox="0 0 1200 280" preserveAspectRatio="none" aria-hidden="true">
+                        <defs>
+                            <linearGradient id="career-acceleration" x1="0" y1="1" x2="1" y2="0">
+                                <stop offset="0" stop-color="#ff5b45"/>
+                                <stop offset="0.42" stop-color="#d49336"/>
+                                <stop offset="1" stop-color="#88a337"/>
+                            </linearGradient>
+                        </defs>
+                        <path class="career-path-shadow" d="M20 218 C170 218 190 75 340 75 S520 225 670 182 S800 55 910 92 C985 102 1040 77 1088 18"/>
+                        <path class="career-path-line" d="M20 218 C170 218 190 75 340 75 S520 225 670 182 S800 55 910 92"/>
+                        <path class="career-path-acceleration" d="M910 92 C985 102 1040 77 1088 18"/>
+                        <path class="career-braid-halo" d="M1088 18 C1120 -55 1150 -145 1178 -225 S1212 -390 1205 -540"/>
+                        <path class="career-braid-strand career-braid-strand--a" d="M1088 18 C1125 -25 1155 -65 1150 -105 S1128 -150 1148 -190 S1195 -230 1190 -275 S1168 -325 1190 -370 S1225 -430 1205 -540"/>
+                        <path class="career-braid-strand career-braid-strand--b" d="M1088 18 C1110 -25 1110 -65 1125 -105 S1168 -150 1174 -190 S1155 -230 1166 -275 S1210 -325 1208 -370 S1185 -430 1205 -540"/>
+                        <path class="career-braid-strand career-braid-strand--c" d="M1088 18 C1120 -55 1150 -145 1178 -225 S1212 -390 1205 -540"/>
+                        <path class="career-braid-glint" d="M1088 18 C1120 -55 1150 -145 1178 -225 S1212 -390 1205 -540"/>
+                    </svg>
+                    <div class="career-stop career-stop--one">
+                        <i></i><span>2001</span><b>Voice &amp; mobile</b><small>IVO · Axiom · EMCC</small>
+                    </div>
+                    <div class="career-stop career-stop--two">
+                        <i></i><span>2008</span><b>Systems networking</b><small>Windows Phone · Azure</small>
+                    </div>
+                    <div class="career-stop career-stop--three">
+                        <i></i><span>2013</span><b>Database engine</b><small>Microsoft SQL Server</small>
+                    </div>
+                    <div class="career-stop career-stop--four">
+                        <i></i><span>2021</span><b>Backend scale</b><small>Salesforce</small>
+                    </div>
+                    <div class="career-stop career-stop--now">
+                        <i></i><span>NOW</span><b>Agentic infrastructure</b><small>Navigation · orchestration · autonomous flow</small>
+                    </div>
+                </div>
+
+                <p class="trajectory__statement" data-reveal>
+                    <span>Twenty years of compounding.</span>
+                    Agents just changed the slope—I work at the new pace, daily.
+                </p>
+
+                <div class="career-ledger">
+                    <article data-reveal>
+                        <span class="career-ledger__year">2021—Now</span>
+                        <div><h3>Salesforce</h3><p>Principal Backend Software Engineer</p></div>
+                        <div class="career-ledger__insight">
+                            <div class="career-ledger__scope">
+                                <p class="career-ledger__focus">Async pipelines · resource allocation · .NET modernization</p>
+                                <button class="career-ledger__toggle" type="button" aria-expanded="false" aria-controls="career-salesforce-detail" aria-label="Show details for Salesforce"><span class="career-ledger__toggle-open">Details</span><span class="career-ledger__toggle-close">Close</span><i aria-hidden="true">→</i></button>
+                            </div>
+                            <div class="career-ledger__detail" id="career-salesforce-detail" aria-hidden="true"><div>
+                                <span>Stabilized multi-tenant async processing and fair resource sharing.</span>
+                                <span>Led .NET 8 modernization and built reusable AI-assisted migration tooling.</span>
+                            </div></div>
+                        </div>
+                    </article>
+                    <article data-reveal>
+                        <span class="career-ledger__year">2013—2021</span>
+                        <div><h3>Microsoft / SQL Server</h3><p>Principal Software Engineer</p></div>
+                        <div class="career-ledger__insight">
+                            <div class="career-ledger__scope">
+                                <p class="career-ledger__focus">Engine internals · Linux · runtime hosting · debugging</p>
+                                <button class="career-ledger__toggle" type="button" aria-expanded="false" aria-controls="career-sql-detail" aria-label="Show details for Microsoft SQL Server"><span class="career-ledger__toggle-open">Details</span><span class="career-ledger__toggle-close">Close</span><i aria-hidden="true">→</i></button>
+                            </div>
+                            <div class="career-ledger__detail" id="career-sql-detail" aria-hidden="true"><div>
+                                <span>Technical lead for SQL Server Extensibility on Linux; ported SQL Satellite and the type system.</span>
+                                <span>Owned SQLCLR hosting and built engine-wide debugging infrastructure.</span>
+                            </div></div>
+                        </div>
+                    </article>
+                    <article data-reveal>
+                        <span class="career-ledger__year">2009—2013</span>
+                        <div><h3>Microsoft / Azure</h3><p>Software Engineer in Test</p></div>
+                        <div class="career-ledger__insight">
+                            <div class="career-ledger__scope">
+                                <p class="career-ledger__focus">DNS · fault injection · deployment · load balancing</p>
+                                <button class="career-ledger__toggle" type="button" aria-expanded="false" aria-controls="career-azure-detail" aria-label="Show details for Microsoft Azure"><span class="career-ledger__toggle-open">Details</span><span class="career-ledger__toggle-close">Close</span><i aria-hidden="true">→</i></button>
+                            </div>
+                            <div class="career-ledger__detail" id="career-azure-detail" aria-hidden="true"><div>
+                                <span>Designed Azure DNS test architecture and the RCES distributed fault-injection framework.</span>
+                                <span>Built PaaS/IaaS deployment infrastructure and SLB coverage collection.</span>
+                            </div></div>
+                        </div>
+                    </article>
+                    <article data-reveal>
+                        <span class="career-ledger__year">2008—2009</span>
+                        <div><h3>Microsoft / Windows Phone</h3><p>Software Engineer</p></div>
+                        <div class="career-ledger__insight">
+                            <div class="career-ledger__scope">
+                                <p class="career-ledger__focus">Network traffic · cost engine · NDIS</p>
+                                <button class="career-ledger__toggle" type="button" aria-expanded="false" aria-controls="career-phone-detail" aria-label="Show details for Microsoft Windows Phone"><span class="career-ledger__toggle-open">Details</span><span class="career-ledger__toggle-close">Close</span><i aria-hidden="true">→</i></button>
+                            </div>
+                            <div class="career-ledger__detail" id="career-phone-detail" aria-hidden="true"><div>
+                                <span>Implemented traffic monitoring and data-cost estimation, including NDIS driver components.</span>
+                            </div></div>
+                        </div>
+                    </article>
+                    <details class="career-ledger__earlier" data-reveal>
+                        <summary><span>Earlier systems, 2001—2008</span><span><b class="career-ledger__prompt career-ledger__prompt--open">Expand the origin story</b><b class="career-ledger__prompt career-ledger__prompt--close">Collapse the origin story</b> <i>+</i></span></summary>
+                        <div class="career-ledger__earlier-grid">
+                            <article><span>2007—2008</span><h3>EMCC Software</h3><p>BlackBerry push email for Sony Ericsson on Symbian / UIQ.</p></article>
+                            <article><span>2005—2007</span><h3>Ideal Host Poland</h3><p>Led a line-of-business platform for the UK plumbing industry.</p></article>
+                            <article><span>2004—2005</span><h3>Axiom Software</h3><p>Co-founded and shipped an ERP-integrated sales platform.</p></article>
+                            <article><span>2001—2003</span><h3>IVO Software</h3><p>Speech synthesis and accessibility on Symbian S60.</p></article>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="lab section" id="lab" aria-labelledby="lab-title">
+            <div class="shell">
+                <header class="section-heading section-heading--split">
+                    <div>
+                        <p class="kicker" data-reveal><span>04</span> Selected open source</p>
+                        <h2 id="lab-title" data-reveal>Agents need<br>systems, too.</h2>
+                    </div>
+                    <p class="section-heading__aside" data-reveal>
+                        Built from the systems side of AI: navigation, orchestration, persistence,
+                        review, and safety infrastructure that lets coding agents do durable work.
+                        Not a side quest—these tools sit in my own loop, every working day.
+                    </p>
+                </header>
+            </div>
+
+            <div class="project-sections">
+                    <section class="project-section" id="termal" aria-labelledby="termal-title">
+                    <a class="project project--termal" href="https://grlap.github.io/TermAl/" target="_blank" rel="noopener" data-reveal>
+                        <header><span>01 / FEATURED</span><span>Rust · React · TypeScript ↗</span></header>
+                        <div class="termal-body">
+                        <div class="termal-visual" data-termal-tree aria-hidden="true">
+                            <svg class="termal-tree" viewBox="0 0 760 360" preserveAspectRatio="none">
+                                <g class="termal-tree__edges">
+                                    <path class="termal-edge termal-edge--direct" d="M58 180 C122 180 135 71 205 71"/>
+                                    <path class="termal-edge termal-edge--direct" d="M58 180 C122 180 135 177 205 177"/>
+                                    <path class="termal-edge termal-edge--direct" d="M58 180 C122 180 135 283 205 283"/>
+                                    <path class="termal-edge termal-edge--spawn" d="M205 71 C275 71 330 71 411 71"/>
+                                    <path class="termal-edge termal-edge--spawn" d="M205 177 C275 177 330 177 411 177"/>
+                                    <path class="termal-edge termal-edge--spawn" d="M205 283 C275 283 330 283 411 283"/>
+                                    <path class="termal-edge termal-edge--terminal" d="M411 71 C482 71 535 71 616 71"/>
+                                    <path class="termal-edge termal-edge--terminal" d="M411 177 C482 177 535 177 616 177"/>
+                                    <path class="termal-edge termal-edge--terminal" d="M411 283 C482 283 535 283 616 283"/>
+                                </g>
+                            </svg>
+
+                            <div class="termal-user" data-termal-id="user">
+                                <span class="termal-user__avatar"><i></i></span>
+                                <b>YOU</b>
+                                <small>SUPERVISOR</small>
+                            </div>
+
+                            <div class="termal-layer termal-layer--primary" data-termal-layer="1">
+                                <span class="termal-layer__label" data-short="01 / CORE">01 / PRIMARY</span>
+                                <span class="termal-node termal-node--primary" style="--slot: 0" data-termal-id="primary-1" data-termal-parent="user" data-termal-slot="0"><i></i><span><b data-short="S01">SESSION 01</b><small>WORKING</small></span></span>
+                                <span class="termal-node termal-node--primary" style="--slot: 2" data-termal-id="primary-2" data-termal-parent="user" data-termal-slot="2"><i></i><span><b data-short="S02">SESSION 02</b><small>WORKING</small></span></span>
+                                <span class="termal-node termal-node--primary" style="--slot: 4" data-termal-id="primary-3" data-termal-parent="user" data-termal-slot="4"><i></i><span><b data-short="S03">SESSION 03</b><small>WORKING</small></span></span>
+                            </div>
+
+                            <div class="termal-layer termal-layer--spawned" data-termal-layer="2">
+                                <span class="termal-layer__label" data-short="02 / SPAWN">02 / DELEGATED</span>
+                                <span class="termal-node termal-node--spawned" style="--slot: 0" data-termal-id="spawn-1" data-termal-parent="primary-1" data-termal-slot="0"><i></i><span><b data-short="A04">AGENT 04</b><small>RUNNING</small></span></span>
+                                <span class="termal-node termal-node--spawned" style="--slot: 2" data-termal-id="spawn-2" data-termal-parent="primary-2" data-termal-slot="2"><i></i><span><b data-short="A05">AGENT 05</b><small>RUNNING</small></span></span>
+                                <span class="termal-node termal-node--spawned" style="--slot: 4" data-termal-id="spawn-3" data-termal-parent="primary-3" data-termal-slot="4"><i></i><span><b data-short="A06">AGENT 06</b><small>RUNNING</small></span></span>
+                            </div>
+
+                            <div class="termal-layer termal-layer--terminal" data-termal-layer="3">
+                                <span class="termal-layer__label" data-short="03 / EXEC">03 / TERMINAL</span>
+                                <span class="termal-node termal-node--terminal" style="--slot: 0" data-termal-id="terminal-1" data-termal-parent="spawn-1" data-termal-slot="0"><i></i><span><b data-short="T07">TERM 07</b><small>EXEC</small></span></span>
+                                <span class="termal-node termal-node--terminal" style="--slot: 2" data-termal-id="terminal-2" data-termal-parent="spawn-2" data-termal-slot="2"><i></i><span><b data-short="T08">TERM 08</b><small>EXEC</small></span></span>
+                                <span class="termal-node termal-node--terminal" style="--slot: 4" data-termal-id="terminal-3" data-termal-parent="spawn-3" data-termal-slot="4"><i></i><span><b data-short="T09">TERM 09</b><small>EXEC</small></span></span>
+                            </div>
+
+                            <div class="termal-tree__legend"><span><i></i>DIRECT</span><span><i></i>SPAWN</span><span><i></i>RETIRE</span></div>
+                        </div>
+                        <div class="project__copy termal-copy">
+                            <p>Operating environment for AI coding agents</p>
+                            <h3 id="termal-title">TermAl</h3>
+                            <span>Supervise persistent coding sessions from one workspace. Delegate bounded work to child agents, coordinate primary sessions through durable mailboxes and shared project state, then fan results back in.</span>
+                            <div class="termal-capabilities">
+                                <div><i>01</i><span><b>Persistent sessions</b><small>Keep several coding agents live across workspaces and restarts.</small></span></div>
+                                <div><i>02</i><span><b>Delegation + fan-in</b><small>Spawn focused child work and resume when one or many results return.</small></span></div>
+                                <div><i>03</i><span><b>Durable mailbox</b><small>Ordered agent-to-agent messages with receipts and acknowledgements.</small></span></div>
+                                <div><i>04</i><span><b>Shared boards</b><small>Versioned project state for agents; pinned decisions and outputs for you.</small></span></div>
+                            </div>
+                            <small class="termal-runtimes">Codex · Claude Code · Gemini CLI · Cursor Agent · OpenCode</small>
+                        </div>
+                        </div>
+                    </a>
+                    </section>
+
+                    <section class="project-section" id="phoenix-code-nav" aria-labelledby="phoenix-code-nav-title">
+                    <a class="project project--phoenix" href="https://grlap.github.io/PhoenixCodeNav/" target="_blank" rel="noopener" data-reveal>
+                        <header><span>02</span><span>C# · F# · MCP ↗</span></header>
+                        <div class="phoenix-body">
+                        <div class="phoenix-visual" data-phoenix-map aria-hidden="true">
+                            <svg class="phoenix-map" viewBox="0 0 760 360" preserveAspectRatio="none">
+                                <g class="phoenix-routes">
+                                    <path class="phoenix-route phoenix-route--client" d="M48 180H68"/>
+                                    <path class="phoenix-route phoenix-route--query" d="M258 180H270"/>
+                                    <path class="phoenix-route phoenix-route--query" d="M365 180H376"/>
+                                    <path class="phoenix-route phoenix-route--answer" d="M534 180 C558 180 565 180 588 180"/>
+                                </g>
+                                <g class="phoenix-project-graph">
+                                    <path d="M360 79L394 112L434 82L470 120L515 91M394 112L376 159L421 176L470 120L489 168L526 204M376 159L365 217L408 246L451 219L489 168M408 246L443 286L488 254L526 204M421 176L451 219M470 120L421 176M451 219L488 254"/>
+                                    <path class="phoenix-project-graph__hot" d="M376 159L421 176L451 219L489 168L470 120"/>
+                                    <circle cx="360" cy="79" r="4"/><circle cx="394" cy="112" r="5"/><circle cx="434" cy="82" r="3"/><circle cx="470" cy="120" r="5"/><circle cx="515" cy="91" r="3"/><circle cx="376" cy="159" r="5"/><circle cx="421" cy="176" r="6"/><circle cx="489" cy="168" r="5"/><circle cx="526" cy="204" r="4"/><circle cx="365" cy="217" r="3"/><circle cx="408" cy="246" r="5"/><circle cx="451" cy="219" r="6"/><circle cx="443" cy="286" r="3"/><circle cx="488" cy="254" r="4"/>
+                                    <circle class="is-hot" cx="376" cy="159" r="5"/><circle class="is-hot" cx="421" cy="176" r="6"/><circle class="is-hot" cx="451" cy="219" r="6"/><circle class="is-hot" cx="489" cy="168" r="5"/><circle class="is-hot" cx="470" cy="120" r="5"/>
+                                </g>
+                            </svg>
+
+                            <div class="phoenix-user">
+                                <span class="phoenix-user__avatar"><i></i></span>
+                                <b>YOU</b>
+                                <small>QUESTION</small>
+                            </div>
+
+                            <div class="phoenix-editor">
+                                <div class="phoenix-editor__bar"><span>OrderService.cs</span><b>C# · MCP</b></div>
+                                <div class="phoenix-code" aria-label="C sharp source snippet">
+                                    <span><i>1</i><code><b class="syntax-keyword">public</b> <b class="syntax-type">Task&lt;Order&gt;</b></code></span>
+                                    <span><i>2</i><code><b class="syntax-method">Load</b>(<b class="syntax-type">OrderId</b> id) =&gt;</code></span>
+                                    <span><i>3</i><code>&nbsp;&nbsp;store</code></span>
+                                    <span><i>4</i><code>&nbsp;&nbsp;&nbsp;&nbsp;.<mark>GetAsync</mark>(id);</code></span>
+                                </div>
+                                <div class="phoenix-type-tip">
+                                    <small>EXACT SYMBOL</small>
+                                    <b><span>OrderStore</span>.GetAsync</b>
+                                    <code><i>OrderId</i> → Task&lt;<em>Order</em>&gt;</code>
+                                </div>
+                            </div>
+
+                            <div class="phoenix-core"><span>PHOENIX</span><b>SHARED DAEMON</b><i></i></div>
+                            <div class="phoenix-repo-label"><span>LARGE MONOREPO</span><b>C# + BOUNDED F#</b><small>INDEXED PROJECT GRAPH</small></div>
+
+                            <div class="phoenix-results">
+                                <span class="phoenix-results__label">COMPACT ANSWER</span>
+                                <span><b>DEFINITION</b><i>EXACT</i></span>
+                                <span><b>CALLERS</b><i>EXACT</i></span>
+                                <span><b>TEST LEADS</b><i>HEURISTIC</i></span>
+                            </div>
+
+                            <span class="phoenix-fresh"><i></i> WATCHING / FRESH</span>
+                        </div>
+                        <div class="project__copy phoenix-copy">
+                            <p>Local code navigation for AI agents</p>
+                            <h3 id="phoenix-code-nav-title">PhoenixCodeNav</h3>
+                            <span>A fast, structured map of very large C# and mixed C#/F# repositories. Phoenix keeps one local index warm, narrows each question to the projects that matter, and returns compact evidence labeled by confidence and freshness.</span>
+                            <div class="phoenix-capabilities">
+                                <div><i>01</i><span><b>Ranked repository index</b><small>Persistent SQLite search and syntax maps across C#, F#, Markdown and SQL.</small></span></div>
+                                <div><i>02</i><span><b>Exact C# semantics</b><small>Lazy Roslyn clusters resolve definitions, references, implementations and callers—without loading the whole solution or running MSBuild.</small></span></div>
+                                <div><i>03</i><span><b>Ownership + dependency graph</b><small>Map compile ownership, dependency direction, impact and related tests across legacy and SDK-style projects.</small></span></div>
+                                <div><i>04</i><span><b>Bounded agent context</b><small>Return outlines, precise source spans and context packs instead of whole-file dumps.</small></span></div>
+                            </div>
+                            <small class="phoenix-runtimes">Codex · Claude Code · any MCP client&nbsp;&nbsp;/&nbsp;&nbsp;local shared daemon</small>
+                        </div>
+                        </div>
+                    </a>
+                    </section>
+
+                    <section class="project-section" id="starfish" aria-labelledby="starfish-title">
+                    <a class="project project--starfish" href="https://github.com/grlap/starfish" target="_blank" rel="noopener" data-reveal>
+                        <header><span>03</span><span>Rust ↗</span></header>
+                        <div class="starfish-body">
+                        <div class="starfish-architecture" aria-hidden="true">
+                            <span class="starfish-architecture__label">01 / RUNTIME LAYERS</span>
+                            <svg viewBox="0 0 400 520" preserveAspectRatio="xMidYMid meet">
+                                <defs>
+                                    <linearGradient id="starfish-storage-layer" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe5bd"/><stop offset="1" stop-color="#efb05e"/></linearGradient>
+                                    <linearGradient id="starfish-module-layer" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffc5be"/><stop offset="1" stop-color="#e47b70"/></linearGradient>
+                                    <linearGradient id="starfish-reactor-layer" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c8f2e8"/><stop offset="1" stop-color="#79d6d0"/></linearGradient>
+                                    <marker id="starfish-architecture-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#79d6d0"/></marker>
+                                </defs>
+                                <g transform="translate(0 28)">
+                                <g class="starfish-architecture__flow">
+                                    <path d="M258 16V31" marker-end="url(#starfish-architecture-arrow)"/>
+                                    <path d="M258 127V136" marker-end="url(#starfish-architecture-arrow)"/>
+                                    <path d="M258 199V233" marker-end="url(#starfish-architecture-arrow)"/>
+                                    <path d="M258 363V374" marker-end="url(#starfish-architecture-arrow)"/>
+                                    <path d="M258 400H176M258 400H340M176 400V415M258 400V415M340 400V415"/>
+                                    <path class="starfish-architecture__branch" d="M120 82L134 75M120 192L158 297"/>
+                                    <g class="starfish-architecture__joins">
+                                        <circle cx="120" cy="82" r="2.2"/><circle cx="134" cy="75" r="2.2"/>
+                                        <circle cx="120" cy="192" r="2.2"/><circle cx="158" cy="297" r="2.2"/>
+                                    </g>
+                                </g>
+                                <text class="starfish-architecture__note" x="258" y="13">STREAMS · QUERIES · INDEXES</text>
+                                <g class="starfish-architecture__layer starfish-architecture__layer--storage">
+                                    <polygon class="layer-top" points="258,32 378,72 258,112 138,72"/>
+                                    <polygon class="layer-left" points="138,72 258,112 258,127 138,87"/>
+                                    <polygon class="layer-right" points="258,112 378,72 378,87 258,127"/>
+                                    <text class="layer-title" x="258" y="70">STORAGE</text>
+                                    <text class="layer-detail" x="258" y="83" textLength="150" lengthAdjust="spacingAndGlyphs">WAL · MVCC · BUFFER POOL</text>
+                                </g>
+                                <g class="starfish-architecture__layer starfish-architecture__layer--module">
+                                    <polygon class="layer-top" points="68,59 120,78 68,97 16,78"/>
+                                    <polygon class="layer-left" points="16,78 68,97 68,108 16,89"/>
+                                    <polygon class="layer-right" points="68,97 120,78 120,89 68,108"/>
+                                    <text class="layer-title" x="68" y="82">CORE</text>
+                                </g>
+                                <text class="starfish-architecture__module-note" x="72" y="124">LOCK-FREE STRUCTURES</text>
+                                <text class="starfish-architecture__note" x="258" y="150">ASYNC NETWORK PROTOCOLS</text>
+                                <g class="starfish-architecture__protocols">
+                                    <g><polygon points="176,158 211,170 176,182 141,170"/><polygon class="backend-side" points="141,170 176,182 176,191 141,179"/><polygon class="backend-side" points="176,182 211,170 211,179 176,191"/><text x="176" y="174">HTTP</text></g>
+                                    <g><polygon points="258,158 293,170 258,182 223,170"/><polygon class="backend-side" points="223,170 258,182 258,191 223,179"/><polygon class="backend-side" points="258,182 293,170 293,179 258,191"/><text x="258" y="174">QUIC</text></g>
+                                    <g><polygon points="340,158 375,170 340,182 305,170"/><polygon class="backend-side" points="305,170 340,182 340,191 305,179"/><polygon class="backend-side" points="340,182 375,170 375,179 340,191"/><text x="340" y="174">TLS</text></g>
+                                </g>
+                                <g class="starfish-architecture__layer starfish-architecture__layer--module">
+                                    <polygon class="layer-top" points="68,169 120,188 68,207 16,188"/>
+                                    <polygon class="layer-left" points="16,188 68,207 68,218 16,199"/>
+                                    <polygon class="layer-right" points="68,207 120,188 120,199 68,218"/>
+                                    <text class="layer-title" x="68" y="192">EPOCH</text>
+                                </g>
+                                <text class="starfish-architecture__module-note" x="68" y="234">EPOCH RECLAMATION</text>
+                                <text class="starfish-architecture__note starfish-architecture__runtime-note" x="385" y="252">PER-THREAD · COOPERATIVE</text>
+                                <g class="starfish-architecture__layer starfish-architecture__layer--reactor">
+                                    <polygon class="layer-top" points="258,264 378,304 258,344 138,304"/>
+                                    <polygon class="layer-left" points="138,304 258,344 258,359 138,319"/>
+                                    <polygon class="layer-right" points="258,344 378,304 378,319 258,359"/>
+                                    <text class="layer-title" x="258" y="302">REACTOR</text>
+                                    <text class="layer-detail layer-detail--long" x="258" y="315" textLength="158" lengthAdjust="spacingAndGlyphs">COORDINATOR · REACTORS · I/O</text>
+                                </g>
+                                <text class="starfish-architecture__note starfish-architecture__backend-note" x="258" y="386">NATIVE ASYNC I/O BACKENDS</text>
+                                <g class="starfish-architecture__backend">
+                                    <g><polygon points="176,416 220,432 176,448 132,432"/><polygon class="backend-side" points="132,432 176,448 176,459 132,443"/><polygon class="backend-side" points="176,448 220,432 220,443 176,459"/><text x="176" y="436">io_uring</text></g>
+                                    <g><polygon points="258,416 302,432 258,448 214,432"/><polygon class="backend-side" points="214,432 258,448 258,459 214,443"/><polygon class="backend-side" points="258,448 302,432 302,443 258,459"/><text x="258" y="436">kqueue</text></g>
+                                    <g><polygon points="340,416 384,432 340,448 296,432"/><polygon class="backend-side" points="296,432 340,448 340,459 296,443"/><polygon class="backend-side" points="340,448 384,432 384,443 340,459"/><text x="340" y="436">IOCP</text></g>
+                                </g>
+                                <text class="starfish-architecture__platform" x="176" y="482">LINUX</text><text class="starfish-architecture__platform" x="258" y="482">MACOS</text><text class="starfish-architecture__platform" x="340" y="482">WINDOWS</text>
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="starfish-visual" aria-hidden="true">
+                            <div class="starfish-console"><span>THREAD-PER-CORE / NUMA AWARE</span><b><i></i> COOPERATIVE</b></div>
+                            <svg class="starfish-fabric" viewBox="0 0 520 260" preserveAspectRatio="none">
+                                <path d="M234 122H286"/>
+                                <path d="M234 138H286"/>
+                                <circle cx="260" cy="130" r="3"/>
+                                <circle class="handoff-bead" cx="0" cy="122" r="3.4"/>
+                                <circle class="handoff-bead handoff-bead--back" cx="0" cy="138" r="3.4"/>
+                            </svg>
+                            <div class="starfish-numa">
+                                <div class="starfish-numa__label"><span>NUMA DOMAIN 00</span><b>NUMA-AWARE HEAPS</b></div>
+                                <div class="starfish-core-stack">
+                                    <div class="starfish-core-row" style="--phase: 0s">
+                                        <div class="starfish-reactor"><span>C00</span><i></i></div>
+                                        <div class="starfish-queue"><small>LOCAL ACTIVE QUEUE</small><span><i></i><i></i><i></i><i></i></span></div>
+                                    </div>
+                                    <div class="starfish-core-row" style="--phase: -.35s">
+                                        <div class="starfish-reactor"><span>C01</span><i></i></div>
+                                        <div class="starfish-queue"><small>LOCAL ACTIVE QUEUE</small><span><i></i><i></i><i></i><i></i></span></div>
+                                    </div>
+                                    <div class="starfish-core-row" style="--phase: -.7s">
+                                        <div class="starfish-reactor"><span>C02</span><i></i></div>
+                                        <div class="starfish-queue"><small>LOCAL ACTIVE QUEUE</small><span><i></i><i></i><i></i><i></i></span></div>
+                                    </div>
+                                    <div class="starfish-core-row" style="--phase: -1.05s">
+                                        <div class="starfish-reactor"><span>C03</span><i></i></div>
+                                        <div class="starfish-queue"><small>LOCAL ACTIVE QUEUE</small><span><i></i><i></i><i></i><i></i></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="starfish-numa">
+                                <div class="starfish-numa__label"><span>NUMA DOMAIN 01</span><b>NUMA-AWARE HEAPS</b></div>
+                                <div class="starfish-core-stack">
+                                    <div class="starfish-core-row" style="--phase: -1.4s">
+                                        <div class="starfish-reactor"><span>C04</span><i></i></div>
+                                        <div class="starfish-queue"><small>LOCAL ACTIVE QUEUE</small><span><i></i><i></i><i></i><i></i></span></div>
+                                    </div>
+                                    <div class="starfish-core-row" style="--phase: -1.75s">
+                                        <div class="starfish-reactor"><span>C05</span><i></i></div>
+                                        <div class="starfish-queue"><small>LOCAL ACTIVE QUEUE</small><span><i></i><i></i><i></i><i></i></span></div>
+                                    </div>
+                                    <div class="starfish-core-row" style="--phase: -2.1s">
+                                        <div class="starfish-reactor"><span>C06</span><i></i></div>
+                                        <div class="starfish-queue"><small>LOCAL ACTIVE QUEUE</small><span><i></i><i></i><i></i><i></i></span></div>
+                                    </div>
+                                    <div class="starfish-core-row" style="--phase: -2.45s">
+                                        <div class="starfish-reactor"><span>C07</span><i></i></div>
+                                        <div class="starfish-queue"><small>LOCAL ACTIVE QUEUE</small><span><i></i><i></i><i></i><i></i></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project__copy starfish-copy">
+                            <p>Thread-per-core async I/O runtime</p>
+                            <h3 id="starfish-title">Starfish</h3>
+                            <span>One thread-confined reactor per core, with cooperative scheduling, core-local state and lock-free cross-reactor handoff.</span>
+                            <div class="starfish-specs">
+                                <div><small>EXECUTION</small><b>One reactor per OS thread</b><span>Local active queues, timers and I/O completions.</span></div>
+                                <div><small>MEMORY</small><b>NUMA-aware allocation</b><span>Core-local ownership with MiMalloc-backed heaps.</span></div>
+                                <div><small>HANDOFF</small><b>Lock-free cross-reactor queues</b><span>Remote messages enter the owning reactor without a shared run queue.</span></div>
+                            </div>
+                        </div>
+                        </div>
+                    </a>
+                    </section>
+
+            </div>
+        </section>
+
+        <section class="education section" aria-labelledby="education-title">
+            <div class="shell education__layout">
+                <div>
+                    <p class="kicker" data-reveal><span>05</span> First principles</p>
+                    <h2 id="education-title" data-reveal>Before distributed systems,<br>there were brain waves.</h2>
+                </div>
+                <div class="education__card" data-reveal data-tilt>
+                    <span class="education__year">1998—2003</span>
+                    <p>Gdansk University of Technology</p>
+                    <h3>M.S. in Computer Science &amp; Engineering</h3>
+                    <p class="education__degree">B.S. in Computer Science</p>
+                    <ul><li>Minor in Biomedical Engineering</li><li>Thesis: EEG analysis using wavelet transform</li></ul>
+                    <div class="education__wave" aria-hidden="true">
+                        <svg viewBox="0 0 600 96" preserveAspectRatio="none">
+                            <line x1="0" y1="20" x2="600" y2="20" />
+                            <line x1="0" y1="48" x2="600" y2="48" />
+                            <line x1="0" y1="76" x2="600" y2="76" />
+                            <path d="M-24 19.3L-18 19.4L-12 17.9L-6 18.6L0 20.6L6 21.1L12 21L18 21.6L24 21.3L30 19.5L36 18.3L42 18.7L48 18.9L54 18.6L60 20.5L66 22.6L72 21.3L78 20.6L84 21.7L90 19.2L96 16.5L102 18.9L108 19.8L114 18.1L120 21.3L126 24L132 20.7L138 20L144 21.8L150 18.1L156 16.1L162 19.6L168 20L174 18.8L180 22.1L186 23.3L192 20.3L198 20L204 20.4L210 18L216 17.5L222 19.6L228 20.2L234 20.3L240 21.6L246 22L252 20.6L258 19.4L264 19.2L270 18.8L276 18.1L282 19.2L288 21.2L294 21.1L300 20.8L306 22.2L312 21L318 17.9L324 18.6L330 19.5L336 17.4L342 19.2L348 23L354 21.4L360 20.4L366 22.9L372 20.3L378 16.5L384 18.8L390 19.5L396 17.3L402 20.4L408 23.5L414 21.2L420 20.7L426 22L432 19.2L438 17L444 18.7L450 19.3L456 18.9L462 20.9L468 22.4L474 21.5L480 20.5L486 20.2L492 19.3L498 18L504 18.3L510 19.9L516 20.4L522 20.4L528 22L534 22L540 19.5L546 19.2L552 19.8L558 17.7L564 17.8L570 21.2L576 21L582 20.1L588 22.9L594 22.2L600 18.1L606 18.9L612 19.8L618 16.7L624 18.2" />
+                            <path d="M-24 47.5L-18 44.6L-12 47.1L-6 46.4L0 49L6 50.8L12 48.5L18 49.5L24 46.6L30 43.9L36 47.4L42 48.1L48 51.6L54 52.6L60 46L66 45.5L72 44.8L78 45.7L84 51.8L90 50L96 49.5L102 49.7L108 44.6L114 45.9L120 46.5L126 47.3L132 52.5L138 50.3L144 47.6L150 46.5L156 43.8L162 47.7L168 50.3L174 49.3L180 50.6L186 47.3L192 45.6L198 47.2L204 45.2L210 49L216 51.9L222 49.6L228 49.9L234 44.4L240 42.6L246 48.4L252 49.2L258 52.1L264 51.1L270 45.3L276 46.7L282 45.7L288 46L294 50.3L300 49.3L306 50.3L312 49.5L318 44.5L324 45.7L330 46.9L336 48.7L342 52.5L348 49L354 46.8L360 46.5L366 44.3L372 48.4L378 49.7L384 49L390 52L396 47.6L402 45L408 45.7L414 44.3L420 50.8L426 53L432 49.2L438 48.5L444 43.9L450 44.6L456 49.3L462 48.4L468 50.6L474 50.1L480 46.7L486 47.5L492 45.2L498 45.9L504 50.5L510 50L516 50.7L522 48.2L528 43.3L534 46.2L540 47.6L546 49.4L552 52.6L558 48.1L564 47.4L570 46.9L576 43.4L582 47.7L588 49.4L594 50.4L600 52.8L606 46.5L612 44.3L618 45.8L624 46.1" />
+                            <path d="M-24 74.4L-18 75.6L-12 73L-6 74.3L0 76.9L6 77.7L12 77.4L18 76.8L24 79.8L30 77.1L36 74.9L42 73.6L48 75.1L54 74.3L60 71.9L66 75.5L72 77.3L78 78.7L84 76.4L90 78.7L96 79.4L102 76.1L108 74.4L114 73.7L120 75.8L126 72.8L132 73.6L138 76L144 78L150 77.5L156 76.4L162 79.1L168 77.5L174 75.9L180 73.8L186 75.3L192 75L198 73.1L204 74.8L210 76.5L216 78.4L222 76.2L228 77.9L234 78.9L240 77.2L246 74.7L252 73.5L258 75.9L264 73.1L270 73.3L276 74.8L282 78.3L288 78L294 76.4L300 79.4L306 78.5L312 76.9L318 73L324 74.9L330 74.9L336 72.9L342 73.7L348 75.8L354 78.9L360 76.4L366 77.6L372 78.5L378 78L384 75.3L390 73.7L396 75.8L402 74.1L408 73.9L414 74.2L420 77.5L426 77.7L432 76.5L438 78.1L444 78.2L450 77.6L456 73.7L462 74.8L468 75L474 73.7L480 73.2L486 75L492 79L498 76.8L504 77.7L510 78.3L516 79.4L522 75.9L528 73.2L534 75.3L540 74.1L546 73.6L552 72.7L558 77.3L564 78.1L570 76.9L576 77.7L582 78.4L588 78.5L594 74.1L600 74.7L606 74.9L612 74.7L618 73.4L624 74.5" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact section" id="contact" aria-labelledby="contact-title">
+            <canvas class="contact-field" id="contact-field" aria-hidden="true"></canvas>
+            <div class="shell contact__inner">
+                <p class="kicker" data-reveal><span>06</span> Start a conversation</p>
+                <h2 id="contact-title" data-reveal>Bring me<br>the hard part.</h2>
+                <p class="contact__intro" data-reveal>Systems runtime, database engine, distributed backend, or agentic developer platform—if the problem crosses layers, we should talk.</p>
+                <a class="contact__email magnetic" href="mailto:grzegorz.lapinski@live.com" data-reveal>
+                    <span>grzegorz.lapinski@live.com</span><i aria-hidden="true">↗</i>
+                </a>
+                <div class="contact__links" data-reveal>
+                    <a href="cv.pdf" download="Greg-Lapinski-CV.pdf">CV <span>↓</span></a>
+                    <a href="cv-eu.pdf" download="Greg-Lapinski-CV-European-Markets.pdf" title="Includes recruitment data-processing consent">European markets CV <span>↓</span></a>
+                    <a href="https://github.com/grlap" target="_blank" rel="noopener">GitHub <span>↗</span></a>
+                    <a href="https://www.linkedin.com/in/grzegorz-lapinski/" target="_blank" rel="noopener">LinkedIn <span>↗</span></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="shell">
+            <p>Grzegorz (Greg) Lapinski <span>·</span> Principal Software Engineer</p>
+            <p>Redmond, Washington <span>·</span> <span data-local-time>Local time</span></p>
+            <a href="#top">Back to altitude ↑</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

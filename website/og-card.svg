@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Greg Lapinski — systems foundations for the agentic era</title>
+  <desc id="desc">A dark technical portfolio card with a rising braided trajectory.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07111d"/>
+      <stop offset="1" stop-color="#0a2230"/>
+    </linearGradient>
+    <linearGradient id="trajectory" x1="690" y1="530" x2="1090" y2="50" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff5b45"/>
+      <stop offset="0.48" stop-color="#c59b35"/>
+      <stop offset="1" stop-color="#b7d84d"/>
+    </linearGradient>
+    <radialGradient id="light" cx="0" cy="0" r="1" gradientTransform="translate(957 292) rotate(90) scale(330 390)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#64b8c0" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#64b8c0" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse">
+      <path d="M42 0H0V42" fill="none" stroke="#83a6ba" stroke-opacity=".075"/>
+    </pattern>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#light)"/>
+  <path d="M62 79H1138" stroke="#89a7b8" stroke-opacity=".2"/>
+
+  <g font-family="Arial, Helvetica, sans-serif">
+    <circle cx="69" cy="48" r="14" fill="none" stroke="#8fb6c9" stroke-opacity=".55"/>
+    <text x="69" y="52" text-anchor="middle" fill="#eef3ef" font-size="10" font-weight="700">GL</text>
+    <text x="96" y="53" fill="#a8bac5" font-family="Consolas, Menlo, monospace" font-size="13" font-weight="700" letter-spacing="2.4">GREG LAPINSKI · PRINCIPAL SOFTWARE ENGINEER</text>
+
+    <text x="62" y="196" fill="#f5f4ee" font-size="82" font-weight="750" letter-spacing="-4.5">Systems</text>
+    <text x="62" y="278" fill="#f5f4ee" font-size="82" font-weight="750" letter-spacing="-4.5">foundations.</text>
+    <text x="62" y="365" fill="#b7d84d" font-size="82" font-weight="750" letter-spacing="-4.5">Agentic era.</text>
+
+    <text x="66" y="425" fill="#aab9c3" font-size="21">Systems programming · Distributed systems · Database engines</text>
+    <text x="66" y="460" fill="#aab9c3" font-size="21">Production-scale backends · Agentic infrastructure</text>
+
+    <g transform="translate(62 536)">
+      <text y="0" fill="#ff6a55" font-family="Consolas, Menlo, monospace" font-size="13" font-weight="700" letter-spacing="2">20+ YEARS</text>
+      <text x="132" y="0" fill="#d8e0e2" font-size="16" font-weight="700">Work below the interface.</text>
+      <text y="39" fill="#7f96a4" font-family="Consolas, Menlo, monospace" font-size="14" letter-spacing="1.5">LAPINSKI.IO</text>
+    </g>
+  </g>
+
+  <g aria-hidden="true">
+    <path d="M696 548C778 548 831 513 875 462C917 413 937 363 960 306" fill="none" stroke="#8ca0a8" stroke-opacity=".18" stroke-width="25" stroke-linecap="round"/>
+    <path d="M696 548C778 548 831 513 875 462C917 413 937 363 960 306" fill="none" stroke="url(#trajectory)" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="702" cy="548" r="7" fill="#07111d" stroke="#ff5b45" stroke-width="3"/>
+    <circle cx="876" cy="461" r="7" fill="#07111d" stroke="#d89d39" stroke-width="3"/>
+    <circle cx="960" cy="306" r="9" fill="#07111d" stroke="#b7d84d" stroke-width="3" filter="url(#glow)"/>
+
+    <path d="M960 306C1017 278 1010 243 977 220C944 197 949 161 1009 137C1069 113 1063 76 1025 48C1008 35 1005 21 1017 7" fill="none" stroke="#89a736" stroke-width="4" stroke-linecap="round"/>
+    <path d="M960 306C975 272 952 246 941 220C930 194 954 163 1018 137C1082 111 1084 76 1045 48C1027 35 1023 21 1036 7" fill="none" stroke="#b7d84d" stroke-width="6" stroke-linecap="round" filter="url(#glow)"/>
+    <path d="M960 306C998 274 1031 246 1029 220C1027 194 991 164 972 137C953 110 979 77 1059 48C1095 35 1107 21 1100 7" fill="none" stroke="#dff582" stroke-opacity=".92" stroke-width="3" stroke-linecap="round"/>
+
+    <g fill="#b7d84d">
+      <circle cx="982" cy="272" r="2.5"/><circle cx="953" cy="239" r="2.5"/><circle cx="994" cy="180" r="2.5"/>
+      <circle cx="1034" cy="119" r="2.5"/><circle cx="1022" cy="62" r="2.5"/>
+    </g>
+    <text x="981" y="324" fill="#b7d84d" font-family="Consolas, Menlo, monospace" font-size="12" font-weight="700" letter-spacing="2">NOW · ACCELERATING</text>
+  </g>
+</svg>

@@ -1,0 +1,19 @@
+# Exclude IDE files
+.idea/
+.metals/
+.vscode/
+
+cv.aux
+cv.fdb_latexmk
+cv.fls
+cv.log
+cv.out
+cv.synctex.gz
+cv.xdv
+cv-eu.aux
+cv-eu.fdb_latexmk
+cv-eu.fls
+cv-eu.log
+cv-eu.out
+cv-eu.synctex.gz
+cv-eu.xdv
