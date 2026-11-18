@@ -581,14 +581,51 @@
                 <header class="section-heading section-heading--split">
                     <div>
                         <p class="kicker" data-reveal><span>04</span> Selected open source</p>
-                        <h2 id="lab-title" data-reveal>Agents need<br>systems, too.</h2>
+                        <h2 id="lab-title" data-reveal>An autonomous<br>coding factory.</h2>
                     </div>
                     <p class="section-heading__aside" data-reveal>
-                        Built from the systems side of AI: navigation, orchestration, memory,
-                        review, and behavioral control that let coding agents do durable work.
-                        Not a side quest—these tools sit in my own loop, every working day.
+                        Engram provides the work ledger and execution memory. TermAl provides
+                        the agent host and control plane. Together they coordinate implementation,
+                        independent review, exact-input verification and evidence-bound landing
+                        across machines.
                     </p>
                 </header>
+                <div class="factory-loop" data-reveal aria-label="Autonomous coding factory loop">
+                    <div class="factory-loop__heading">
+                        <span>THE FACTORY LOOP</span>
+                        <p>Autonomous by default. Human on the loop.</p>
+                    </div>
+                    <div class="factory-cycle">
+                        <svg class="factory-cycle__arrows" viewBox="0 0 1000 620" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                            <defs>
+                                <marker id="factory-loop-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                                    <path d="M0 0 10 5 0 10Z" />
+                                </marker>
+                            </defs>
+                            <path class="factory-cycle__arc" d="M610 75C720 85 805 125 850 175" />
+                            <path class="factory-cycle__arc" d="M910 245C935 290 925 340 895 380" />
+                            <path class="factory-cycle__arc" d="M835 485C760 540 680 560 610 565" />
+                            <path class="factory-cycle__arc" d="M390 565C310 560 235 535 165 485" />
+                            <path class="factory-cycle__arc" d="M90 380C55 330 60 280 90 235" />
+                            <path class="factory-cycle__arc factory-cycle__arc--return" d="M165 140C240 85 315 65 390 60" />
+                        </svg>
+                        <div class="factory-cycle__core">
+                            <span>EXECUTE → EVIDENCE → LEARN</span>
+                            <b>Every result feeds<br>the next task.</b>
+                            <small>Outcomes and friction shape what happens next.</small>
+                        </div>
+                        <ol>
+                            <li class="factory-cycle__step factory-cycle__step--frame"><span>01</span><b>Frame</b><small>Goals + risk boundaries</small><em>You</em></li>
+                            <li class="factory-cycle__step factory-cycle__step--ready"><span>02</span><b>Ready</b><small>Bounded work + claims</small><em>Engram</em></li>
+                            <li class="factory-cycle__step factory-cycle__step--build"><span>03</span><b>Build</b><small>Code + tests</small><em>TermAl</em></li>
+                            <li class="factory-cycle__step factory-cycle__step--review"><span>04</span><b>Review</b><small>Independent agent pair</small><em>TermAl</em></li>
+                            <li class="factory-cycle__step factory-cycle__step--verify"><span>05</span><b>Verify</b><small>Exact final tree + full suite</small><em>Shared</em></li>
+                            <li class="factory-cycle__step factory-cycle__step--land"><span>06</span><b>Land + learn</b><small>Evidence + next action</small><em>Engram</em></li>
+                        </ol>
+                        <p class="factory-cycle__return">↶ Land + learn returns to Frame</p>
+                    </div>
+                    <p class="factory-loop__note">People set priorities and resolve exceptions. Agents handle ordinary implementation, review, verification, integration and recovery.</p>
+                </div>
             </div>
 
             <div class="project-sections">
@@ -614,7 +651,7 @@
                             <div class="termal-user" data-termal-id="user">
                                 <span class="termal-user__avatar"><i></i></span>
                                 <b>YOU</b>
-                                <small>SUPERVISOR</small>
+                                <small>ON THE LOOP</small>
                             </div>
 
                             <div class="termal-layer termal-layer--primary" data-termal-layer="1">
@@ -641,14 +678,14 @@
                             <div class="termal-tree__legend"><span><i></i>DIRECT</span><span><i></i>SPAWN</span><span><i></i>RETIRE</span></div>
                         </div>
                         <div class="project__copy termal-copy">
-                            <p>Operating environment for AI coding agents</p>
+                            <p>Agent host + control plane</p>
                             <h3 id="termal-title">TermAl</h3>
-                            <span>Supervise persistent coding sessions from one workspace. Delegate bounded work to child agents, coordinate primary sessions through durable mailboxes and shared project state, then fan results back in.</span>
+                            <span>Runs the coding workforce: persistent multi-vendor sessions, bounded delegation, durable coordination and federated execution. Agents implement, review, repair and integrate ordinary work without routine babysitting.</span>
                             <div class="termal-capabilities">
-                                <div><i>01</i><span><b>Persistent sessions</b><small>Keep several coding agents live across workspaces and restarts.</small></span></div>
-                                <div><i>02</i><span><b>Delegation + fan-in</b><small>Spawn focused child work and resume when one or many results return.</small></span></div>
-                                <div><i>03</i><span><b>Durable mailbox</b><small>Ordered agent-to-agent messages with receipts and acknowledgements.</small></span></div>
-                                <div><i>04</i><span><b>Shared boards</b><small>Versioned project state for agents; pinned decisions and outputs for you.</small></span></div>
+                                <div><i>01</i><span><b>Persistent agent workforce</b><small>Keep coding sessions live across workspaces and restarts.</small></span></div>
+                                <div><i>02</i><span><b>Delegation + coordination</b><small>Spawn bounded child work, coordinate through durable mailboxes and shared boards, then fan results back in.</small></span></div>
+                                <div><i>03</i><span><b>Independent review + verification</b><small>Pair independent reviewers with exact-input checks and final-tree full-suite verification.</small></span></div>
+                                <div><i>04</i><span><b>Federated, human-on-the-loop control</b><small>Execute across machines with source identity, standing approvals and explicit exception boundaries.</small></span></div>
                             </div>
                             <small class="termal-runtimes">Codex · Claude Code · Gemini CLI · Cursor Agent · OpenCode</small>
                         </div>
@@ -678,16 +715,16 @@
                             <span class="engram-visual__caption">One capture. Many useful views.</span>
                         </div>
                         <div class="project__copy engram-copy">
-                            <p>A notebook for coding agents · Alpha</p>
+                            <p>Work ledger + execution memory · Alpha</p>
                             <h3 id="engram-title">Engram</h3>
-                            <span>A local-first notebook for coding agents. Engram brings structured work, typed memory, and evidence-backed completion into one Rust and SQLite core.</span>
+                            <span>The local-first system of record for the coding factory. Engram turns goals into bounded work, preserves ownership and evidence, and carries context into recovery and the next task.</span>
                             <div class="engram-capabilities">
-                                <div><i>01</i><span><b>Local work graph</b><small>Bounded decomposition, prerequisites, ready views, assignment and fenced claims.</small></span></div>
-                                <div><i>02</i><span><b>Typed working memory</b><small>Shared and private context with authority, provenance and deterministic delivery.</small></span></div>
-                                <div><i>03</i><span><b>Host-private control loop</b><small>Policy-aware grants and restart-safe checkpoints; enforced gates require a conforming host.</small></span></div>
-                                <div><i>04</i><span><b>Evidence-gated completion</b><small>Open obligations block completion; immutable seals preserve the accepted result.</small></span></div>
+                                <div><i>01</i><span><b>Bounded work + ownership</b><small>Decompose goals into prerequisites, ready views, assignments and fenced claims.</small></span></div>
+                                <div><i>02</i><span><b>Typed execution memory</b><small>Preserve shared and private context with authority, provenance and deterministic delivery.</small></span></div>
+                                <div><i>03</i><span><b>Evidence-bound completion</b><small>Bind acceptance to exact inputs and host observations; open obligations block completion.</small></span></div>
+                                <div><i>04</i><span><b>Recovery + next action</b><small>Restart safely, retain the accepted result and hand the next worker a concrete starting point.</small></span></div>
                             </div>
-                            <small class="engram-runtimes">Rust · SQLite · CLI + MCP · alpha / in development</small>
+                            <small class="engram-runtimes">Rust · SQLite · CLI + MCP · local-first / alpha</small>
                         </div>
                         </div>
                     </a>
