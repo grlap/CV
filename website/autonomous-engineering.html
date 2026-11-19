@@ -7,8 +7,8 @@
     <meta name="color-scheme" content="dark">
     <meta name="robots" content="noindex,nofollow,noarchive">
     <meta name="author" content="Grzegorz (Greg) Lapinski">
-    <meta name="description" content="How a person directs a self-organizing engineering team, how agents coordinate work on several goals, and how a shared rulebook governs each change.">
-    <title>A self-organizing engineering team under human direction · Greg Lapinski</title>
+    <meta name="description" content="A developer gives goals to a team of software agents. The agents select tasks, write code and do checks on each change.">
+    <title>How a team of agents writes software · Greg Lapinski</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="autonomous-engineering.css">
 </head>
@@ -18,6 +18,21 @@
         <symbol id="loop-mini" viewBox="0 0 64 64">
             <circle class="mini__ring" cx="32" cy="32" r="24" pathLength="60" stroke-dasharray="9 1" transform="rotate(-117 32 32)"/>
             <circle class="mini__checks" cx="32" cy="32" r="24" pathLength="60" stroke-dasharray="9 1 9 1 9 31" stroke-dashoffset="-20" transform="rotate(-117 32 32)"/>
+        </symbol>
+        <symbol id="code-package" viewBox="0 0 64 60">
+            <g stroke="currentColor" stroke-width="1.8" stroke-linejoin="round">
+                <path fill="var(--panel)" d="m3 16 29-13 29 13v29L32 58 3 45z"/>
+                <path fill="none" d="m3 16 29 13 29-13M32 29v29"/>
+                <path fill="currentColor" stroke="none" opacity=".6" d="m18 9 6-3 29 13-6 3z"/>
+                <path fill="none" stroke-linecap="round" d="m12 26-4 3 4 7m9-6 4 6-4 3m-4-12-2 11"/>
+            </g>
+        </symbol>
+        <symbol id="inspection-station" viewBox="0 0 140 105">
+            <g fill="none" stroke="var(--ice)" stroke-width="2">
+                <path d="M118 102V18H89M113 102V23H89"/>
+                <rect x="44" y="6" width="46" height="26" rx="4" fill="var(--panel)"/>
+                <path d="M60 32v6h14v-6M67 38v5" />
+            </g>
         </symbol>
     </svg>
     <header class="site-header">
@@ -33,49 +48,80 @@
         <header class="hero">
             <div>
                 <p class="kicker">Autonomous engineering</p>
-                <h1>How an agent team <span>builds software</span></h1>
-                <p class="standfirst">A person chooses what to build and sets the standards for the work. The agents plan, implement and check changes. Several goals can move forward at once, even while the person spends time on a single design.</p>
+                <h1>How a team of agents <span>writes software</span></h1>
+                <p class="standfirst">A developer gives the teams their goals and the rules for their work. Each team has a coordinator. The agents can continue work on different goals while the developer examines one design.</p>
                 <p class="byline">Greg Lapinski <span aria-hidden="true">·</span> November 2026</p>
             </div>
             <figure class="overview">
-                <figcaption>How the team is organized</figcaption>
-                <dl>
-                    <div>
-                        <dt>Human direction</dt>
-                        <dd>Choose goals, set priorities and define what a good result looks like.</dd>
-                    </div>
-                    <div>
-                        <dt>Agent coordination</dt>
-                        <dd>Break goals into tasks and organize several streams of work.</dd>
-                        <dd class="overview__loops" aria-hidden="true">
-                            <svg viewBox="0 0 192 64"><use href="#loop-mini" width="64" height="64"/><use href="#loop-mini" x="64" width="64" height="64"/><use href="#loop-mini" x="128" width="64" height="64"/></svg>
-                        </dd>
-                    </div>
-                    <div>
-                        <dt>Execution</dt>
-                        <dd>Run the sessions, carry their messages and keep a record of each change and its checks.</dd>
-                    </div>
-                </dl>
+                <figcaption>How the teams communicate</figcaption>
+                <svg class="overview__map" viewBox="0 0 376 334" role="img" aria-labelledby="roles-title roles-desc">
+                    <title id="roles-title">The developer, the Assistant and the two project teams</title>
+                    <desc id="roles-desc">The developer sends goals through the Assistant and receives reports. The Assistant speaks to both coordinators. The coordinators also speak directly to each other. The Consultant advises the Assistant and the coordinators.</desc>
+                    <defs>
+                        <marker id="message-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                            <path d="M1 1 9 5 1 9" fill="none" stroke="var(--ice)" stroke-width="1.5"/>
+                        </marker>
+                    </defs>
+                    <g class="overview__messages" marker-end="url(#message-arrow)">
+                        <path d="M80 48v54"/>
+                        <path d="M96 102V48"/>
+                        <path d="M87 152v60" marker-start="url(#message-arrow)"/>
+                        <path d="M101 152v28h191v32" marker-start="url(#message-arrow)"/>
+                    </g>
+                    <path class="overview__messages" d="M162 241h51" marker-start="url(#message-arrow)" marker-end="url(#message-arrow)"/>
+                    <path class="overview__advice" d="M157 127h69 M324 148v67 M324 198h-26q-6-10-12 0H135v17"/>
+                    <text class="overview__label" x="70" y="80" text-anchor="end">Goals</text>
+                    <text class="overview__label" x="106" y="80">Reports</text>
+                    <text class="overview__label" x="190" y="118" text-anchor="middle">Advice</text>
+
+                    <rect class="team__person" x="23" y="4" width="134" height="40" rx="20"/>
+                    <text class="overview__name team__t--ink" x="90" y="30">Developer</text>
+                    <rect class="team__node" x="23" y="106" width="134" height="42" rx="7"/>
+                    <text class="overview__name" x="90" y="133">Assistant</text>
+                    <rect class="overview__advisor" x="226" y="106" width="144" height="42" rx="7"/>
+                    <text class="overview__name" x="298" y="133">Consultant</text>
+
+                    <g transform="translate(3 216)">
+                        <rect class="team__node" width="157" height="112" rx="8"/>
+                        <text class="overview__name" x="78.5" y="25">Engram</text>
+                        <text class="overview__role" x="78.5" y="45">Coordinator</text>
+                        <path class="overview__divider" d="M10 57h137"/>
+                        <use href="#loop-mini" x="7" y="68" width="34" height="34"/>
+                        <text class="overview__label" x="48" y="83">Coders</text>
+                        <text class="overview__label" x="48" y="101">Integrator</text>
+                    </g>
+                    <g transform="translate(216 216)">
+                        <rect class="team__node" width="157" height="112" rx="8"/>
+                        <text class="overview__name" x="78.5" y="25">TermAl</text>
+                        <text class="overview__role" x="78.5" y="45">Coordinator</text>
+                        <path class="overview__divider" d="M10 57h137"/>
+                        <use href="#loop-mini" x="7" y="68" width="34" height="34"/>
+                        <text class="overview__label" x="48" y="83">Coders</text>
+                        <text class="overview__label" x="48" y="101">Integrator</text>
+                    </g>
+                </svg>
+                <p>Dashed lines show advice from the Consultant. The developer can also speak directly to any task owner.</p>
             </figure>
         </header>
 
         <section class="prose" aria-labelledby="role-title">
-            <h2 id="role-title">Who decides what happens next?</h2>
-            <p>In a conversation with a single coding agent, the person usually supplies the next task. Give a team a goal, and its coordinator can decide what to tackle first, who should take it and what follows when it is done. The person can still change the priority or question a design at any point.</p>
-            <p>That is what it means to have a human <em>on the loop</em>. A coordinator brings back a result, a blocker or a question that needs judgment. If one design needs a long discussion, the agents working on other goals can carry on.</p>
+            <h2 id="role-title">How a goal becomes a task</h2>
+            <p>The developer usually gives a goal to the Assistant. The Assistant sends it to the coordinator for that project. The coordinator divides the work into tasks and selects a coder for each task. If the work involves two projects, the coordinators speak directly to each other.</p>
+            <p>Each team has coders and an integrator. Reviewers and an evaluator join for one task. If a proposal needs another opinion, the Consultant can examine it independently.</p>
+            <p>When a coordinator has a result or needs a decision, the Assistant takes the report or question back to the developer. The developer can also speak directly to the agent responsible for a task. The other teams can continue their work during that discussion.</p>
         </section>
 
         <section aria-labelledby="loop-title">
             <div class="prose">
-                <h2 id="loop-title">One rulebook for every goal</h2>
-                <p>The team can organize its own work because the way it works is written down. Design, coding, testing, communication and operations each have rules. When an agent picks up a task, it knows what it owns, what to record for the next agent, and how to show that the work is complete.</p>
-                <p>The loop below follows one change. The coder proposes a version. Other agents inspect the code, test its behavior and judge whether it meets the original request.</p>
+                <h2 id="loop-title">The same rules for each goal</h2>
+                <p>The team has written rules for design, changes to code, tests, communication and operations. The rules tell each agent what to do and what to record. The next agent uses this record to continue the task.</p>
+                <p>The diagram shows the six steps for a change. At each step, the agent uses the same task record.</p>
             </div>
 
             <figure class="loop">
                 <div class="loop__frame">
                     <svg class="loop__ring" viewBox="-6 -6 640 650" role="img" aria-labelledby="loop-svg-title">
-                        <title id="loop-svg-title">The loop: six stages in a ring, Plan, Build, Review, Verify, Evaluate and Land, around a shared record. A failed check returns the change to Build.</title>
+                        <title id="loop-svg-title">Six steps for a software change. Each agent uses the same task record. If a check shows a problem, the coder corrects the change.</title>
                         <path class="loop__seg" d="M155.5,44.0 A294 294 0 0 1 444.5,44.0 L446.2,98.4 L400.3,122.4 A204 204 0 0 0 199.7,122.4 L202.9,70.7 Z"/>
                         <path class="loop__seg" d="M449.4,46.8 A294 294 0 0 1 594.0,297.2 L547.7,325.8 L504.0,298.0 A204 204 0 0 0 403.7,124.3 L450.0,101.3 Z"/>
                         <path class="loop__seg loop__seg--check" d="M594.0,302.8 A294 294 0 0 1 449.4,553.2 L401.5,527.4 L403.7,475.7 A204 204 0 0 0 504.0,302.0 L547.1,330.6 Z"/>
@@ -116,198 +162,251 @@
                     <ol class="loop__legend">
                         <li>
                             <p class="loop__key"><span>01</span> Plan <em>Coordinator</em></p>
-                            <p>Defines the task, its owner and how the team will judge the result.</p>
+                            <p>The coordinator selects an agent for the task. The coordinator records the acceptance criteria. These criteria tell the team what the change must do.</p>
                         </li>
                         <li>
                             <p class="loop__key"><span>02</span> Build <em>Coder</em></p>
-                            <p>Implements the change and submits a version for checking.</p>
+                            <p>The coder changes the code and records this version in Git. In Git, this record is a commit.</p>
                         </li>
                         <li class="loop__check">
                             <p class="loop__key"><span>03</span> Review <em>Reviewers</em></p>
-                            <p>Review the design and code for problems the author may have missed.</p>
+                            <p>The reviewers examine the design and the code for errors.</p>
                         </li>
                         <li class="loop__check">
                             <p class="loop__key"><span>04</span> Verify <em>Test runner</em></p>
-                            <p>Runs the tests on the version the reviewers examined.</p>
+                            <p>The test runner does the tests on the same commit that the reviewers examined.</p>
                         </li>
                         <li class="loop__check">
                             <p class="loop__key"><span>05</span> Evaluate <em>Evaluator</em></p>
-                            <p>Compares the evidence with the original acceptance criteria.</p>
+                            <p>The evaluator uses the evidence to give a result for each acceptance criterion.</p>
                         </li>
                         <li>
                             <p class="loop__key"><span>06</span> Land <em>Integrator</em></p>
-                            <p>Integrates the version that passed the checks.</p>
+                            <p>After all checks give the correct results, the integrator moves the main branch to that commit.</p>
                         </li>
                     </ol>
                 </div>
-                <figcaption>The coral arrow leads back to the coder. After a repair, the team checks the revised version before it can land.</figcaption>
+                <figcaption>The red-orange arrow shows the path back to the coder. If a check shows a problem, the coder makes a correction. The team does the checks again on the new commit.</figcaption>
+            </figure>
+        </section>
+
+        <section aria-labelledby="assembly-title">
+            <div class="prose">
+                <h2 id="assembly-title">The code assembly line</h2>
+                <p>Each box shows the same package of code changes at a different step. The package is one Git commit. Each check adds evidence to its task record.</p>
+            </div>
+            <figure class="assembly">
+                <ol class="assembly__stations" aria-label="Code package from the coder to check-in">
+                    <li>
+                        <svg viewBox="0 0 140 105" aria-hidden="true"><use href="#code-package" x="38" y="44" width="64" height="60"/></svg>
+                        <div><h3>Code package</h3><p>The coder commits the changes in a worktree.</p></div>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 140 105" aria-hidden="true">
+                            <use href="#inspection-station" width="140" height="105"/>
+                            <g class="assembly__tool"><circle cx="65" cy="17" r="5"/><path d="m69 21 5 5"/></g>
+                            <use href="#code-package" x="38" y="44" width="64" height="60"/>
+                        </svg>
+                        <div><h3>Code review</h3><p>Two reviewers examine the changes and record their findings.</p></div>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 140 105" aria-hidden="true">
+                            <use href="#inspection-station" width="140" height="105"/>
+                            <path class="assembly__tool" d="M51 20h8l4-7 6 13 5-9h8"/>
+                            <use href="#code-package" x="38" y="44" width="64" height="60"/>
+                        </svg>
+                        <div><h3>Tests</h3><p>The test runner records the test results for this commit.</p></div>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 140 105" aria-hidden="true">
+                            <use href="#inspection-station" width="140" height="105"/>
+                            <path class="assembly__tool" d="m54 15 2 2 4-5m4 4h14m-24 6 2 2 4-5m4 4h14"/>
+                            <use href="#code-package" x="38" y="44" width="64" height="60"/>
+                        </svg>
+                        <div><h3>Evaluation</h3><p>The evaluator records a decision for each acceptance criterion.</p></div>
+                    </li>
+                    <li class="assembly__ready">
+                        <svg viewBox="0 0 140 105" aria-hidden="true">
+                            <use href="#code-package" x="38" y="44" width="64" height="60"/>
+                            <circle cx="99" cy="57" r="12" fill="var(--lime)"/>
+                            <path d="m93 57 4 4 8-9" fill="none" stroke="var(--ink)" stroke-width="2.5"/>
+                        </svg>
+                        <div><h3>Ready for check-in</h3><p>The integrator moves the main branch to this commit.</p></div>
+                    </li>
+                </ol>
+                <svg class="assembly__return" viewBox="0 0 1000 34" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M700 2v22H100V5M300 2v22m200-22v22m-406-12 6-8 6 8"/>
+                </svg>
+                <figcaption><strong>Back to the coder.</strong> If a check shows a problem, the coder makes a new commit. All three checks start again for that commit.</figcaption>
             </figure>
         </section>
 
         <section aria-labelledby="team-title">
             <div class="prose">
-                <h2 id="team-title">How work continues across sessions</h2>
-                <p>A goal can outlast the session that started it. <a href="https://grlap.github.io/Engram/">Engram</a> records who owns each task, what the team has decided and which questions are open. <a href="https://grlap.github.io/TermAl/">TermAl</a> runs the sessions and carries their messages. A new agent can read the record and pick up where the last one left off.</p>
-                <p>The teams building these two tools also use them. Each project has its own coordinator, coders and integrator. The coordinators can talk directly when a change in one project affects the other.</p>
+                <h2 id="team-title">How the work continues between sessions</h2>
+                <p>An agent can stop before the team completes a goal. <a href="https://grlap.github.io/Engram/">Engram</a> keeps the task records. Each record identifies the agent responsible for the task. The record also contains decisions and questions that still have no answer. A new agent can read the record and continue the task.</p>
+                <p><a href="https://grlap.github.io/TermAl/">TermAl</a> runs the agent sessions and sends messages between them. The Engram team and the TermAl team use these two tools. Each team has a coordinator, coders and an integrator. For a change to the two projects, the coordinators can send messages directly to each other.</p>
             </div>
 
+            <figure class="team">
+                <div class="team__scroll" tabindex="0" role="region" aria-label="Team and computer diagram. On a small screen, scroll left or right.">
+                    <svg class="team__map" viewBox="0 0 1000 700" role="img" aria-labelledby="team-svg-title">
+                        <title id="team-svg-title">The Assistant sends messages between the developer, the coordinators and the Consultant. Each coordinator has coders and an integrator. The reviewers and the evaluator have sessions for one task. Two other computers receive test requests and send the results back to Central.</title>
+                        <defs>
+                            <marker id="team-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="team__head" d="M0,0 L10,5 L0,10 Z"/></marker>
+                        </defs>
+
+                        <!-- machines -->
+                        <rect class="team__host" x="20" y="96" width="620" height="588" rx="18"/>
+                        <text class="team__label" x="40" y="123">Central · Windows</text>
+                        <rect class="team__host" x="790" y="236" width="190" height="170" rx="18"/>
+                        <text class="team__label" x="808" y="263">DL560 · Linux</text>
+                        <rect class="team__host" x="790" y="456" width="190" height="170" rx="18"/>
+                        <text class="team__label" x="808" y="483">Mac · macOS</text>
+
+                        <!-- the two teams -->
+                        <rect class="team__panel" x="36" y="268" width="285" height="400" rx="14"/>
+                        <rect class="team__panel" x="339" y="268" width="285" height="400" rx="14"/>
+
+                        <!-- messages between sessions -->
+                        <path class="team__mail" d="M330,70 V136 M330,184 V210 M270,184 L190,284 M390,184 L470,284 M290,254 L240,284 M370,254 L420,284 M258.5,309 H401.5 M150,334 L112,385 M207,334 L245,385 M453,334 L415,385 M510,334 L548,385"/>
+
+                        <!-- what crosses a machine boundary -->
+                        <path class="team__cross" marker-end="url(#team-arrow)" d="M648,308 H780"/>
+                        <path class="team__cross" marker-end="url(#team-arrow)" d="M782,336 H650"/>
+                        <text class="team__flow" x="715" y="284">test request,</text>
+                        <text class="team__flow" x="715" y="299">Git commit</text>
+                        <text class="team__flow" x="715" y="356">results</text>
+                        <path class="team__cross" marker-end="url(#team-arrow)" d="M648,528 H780"/>
+                        <path class="team__cross" marker-end="url(#team-arrow)" d="M782,556 H650"/>
+                        <text class="team__flow" x="715" y="504">test request,</text>
+                        <text class="team__flow" x="715" y="519">Git commit</text>
+                        <text class="team__flow" x="715" y="576">results</text>
+
+                        <!-- the developer and the sessions shared by both teams -->
+                        <rect class="team__person" x="255" y="24" width="150" height="46" rx="23"/>
+                        <text class="team__t team__t--ink" x="330" y="53">Developer</text>
+                        <rect class="team__node" x="245" y="136" width="170" height="48" rx="10"/>
+                        <text class="team__t" x="330" y="157">Assistant</text>
+                        <text class="team__s" x="330" y="173">developer contact</text>
+                        <rect class="team__node" x="275" y="210" width="110" height="44" rx="10"/>
+                        <text class="team__t" x="330" y="229">Consultant</text>
+                        <text class="team__s" x="330" y="244">Kimi</text>
+
+                        <!-- Engram team -->
+                        <rect class="team__lead" x="98.5" y="284" width="160" height="50" rx="10"/>
+                        <text class="team__t team__t--ink" x="178.5" y="306">Coordinator</text>
+                        <text class="team__s team__s--ink" x="178.5" y="322">Engram team</text>
+                        <rect class="team__node team__node--back" x="52.5" y="379" width="124" height="50" rx="10"/>
+                        <rect class="team__node" x="46.5" y="385" width="124" height="50" rx="10"/>
+                        <text class="team__t" x="108.5" y="407">Coders</text>
+                        <text class="team__s" x="108.5" y="423">one Git worktree each</text>
+                        <rect class="team__node" x="186.5" y="385" width="124" height="50" rx="10"/>
+                        <text class="team__t" x="248.5" y="407">Integrator</text>
+                        <text class="team__s" x="248.5" y="423">integrates and installs</text>
+                        <rect class="team__temp" x="46.5" y="470" width="264" height="180" rx="12"/>
+                        <text class="team__label team__label--mid" x="178.5" y="495">Sessions for one task</text>
+                        <rect class="team__node team__node--task team__node--back" x="64.5" y="512" width="114" height="50" rx="10"/>
+                        <rect class="team__node team__node--task" x="58.5" y="518" width="114" height="50" rx="10"/>
+                        <text class="team__t" x="115.5" y="540">Reviewers</text>
+                        <text class="team__s" x="115.5" y="556">two model suppliers</text>
+                        <rect class="team__node team__node--task" x="184.5" y="518" width="114" height="50" rx="10"/>
+                        <text class="team__t" x="241.5" y="540">Evaluator</text>
+                        <text class="team__s" x="241.5" y="556">wrote no code</text>
+                        <text class="team__s" x="178.5" y="604">results go to the</text>
+                        <text class="team__s" x="178.5" y="620">session that sent the task</text>
+
+                        <!-- TermAl team -->
+                        <rect class="team__lead" x="401.5" y="284" width="160" height="50" rx="10"/>
+                        <text class="team__t team__t--ink" x="481.5" y="306">Coordinator</text>
+                        <text class="team__s team__s--ink" x="481.5" y="322">TermAl team</text>
+                        <rect class="team__node team__node--back" x="355.5" y="379" width="124" height="50" rx="10"/>
+                        <rect class="team__node" x="349.5" y="385" width="124" height="50" rx="10"/>
+                        <text class="team__t" x="411.5" y="407">Coders</text>
+                        <text class="team__s" x="411.5" y="423">one Git worktree each</text>
+                        <rect class="team__node" x="489.5" y="385" width="124" height="50" rx="10"/>
+                        <text class="team__t" x="551.5" y="407">Integrator</text>
+                        <text class="team__s" x="551.5" y="423">integrates and installs</text>
+                        <rect class="team__temp" x="349.5" y="470" width="264" height="180" rx="12"/>
+                        <text class="team__label team__label--mid" x="481.5" y="495">Sessions for one task</text>
+                        <rect class="team__node team__node--task team__node--back" x="367.5" y="512" width="114" height="50" rx="10"/>
+                        <rect class="team__node team__node--task" x="361.5" y="518" width="114" height="50" rx="10"/>
+                        <text class="team__t" x="418.5" y="540">Reviewers</text>
+                        <text class="team__s" x="418.5" y="556">two model suppliers</text>
+                        <rect class="team__node team__node--task" x="487.5" y="518" width="114" height="50" rx="10"/>
+                        <text class="team__t" x="544.5" y="540">Evaluator</text>
+                        <text class="team__s" x="544.5" y="556">wrote no code</text>
+                        <text class="team__s" x="481.5" y="604">results go to the</text>
+                        <text class="team__s" x="481.5" y="620">session that sent the task</text>
+
+                        <!-- remote machines -->
+                        <rect class="team__node team__node--check" x="815" y="296" width="140" height="52" rx="10"/>
+                        <text class="team__t" x="885" y="319">Test runners</text>
+                        <text class="team__s" x="885" y="335">all or selected tests</text>
+                        <rect class="team__node team__node--check" x="815" y="516" width="140" height="52" rx="10"/>
+                        <text class="team__t" x="885" y="539">Test runners</text>
+                        <text class="team__s" x="885" y="555">all or selected tests</text>
+
+                        <!-- key -->
+                        <path class="team__mail" d="M690,44 H730"/>
+                        <text class="team__key" x="744" y="48">messages between sessions</text>
+                        <rect class="team__node team__node--task" x="690" y="62" width="40" height="18" rx="5"/>
+                        <text class="team__key" x="744" y="75">session for one task</text>
+                        <rect class="team__node team__node--check" x="690" y="89" width="40" height="18" rx="5"/>
+                        <text class="team__key" x="744" y="102">runs the tests</text>
+                        <rect class="team__host" x="690" y="116" width="40" height="18" rx="5"/>
+                        <text class="team__key" x="744" y="129">one computer</text>
+                    </svg>
+                </div>
+                <figcaption>All coder sessions run on the computer named Central. The other two computers do tests. When the team completes synchronization of task records, coders can also use the other computers.</figcaption>
+            </figure>
+
             <details class="technical">
-                <summary>Team map and machine boundaries</summary>
-                <figure class="team">
-                    <div class="team__scroll" tabindex="0" role="region" aria-label="Team and machine diagram, scroll horizontally on narrow screens">
-                        <svg class="team__map" viewBox="0 0 1000 700" role="img" aria-labelledby="team-svg-title">
-                            <title id="team-svg-title">The team: the person talks to an assistant session, which talks to the two coordinators and the consultant. Each coordinator has coders and an integrator, with reviewers and an evaluator created per task. These run on one machine. Test runners run on two other machines, and test requests and results cross between them.</title>
-                            <defs>
-                                <marker id="team-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="team__head" d="M0,0 L10,5 L0,10 Z"/></marker>
-                            </defs>
-
-                            <!-- machines -->
-                            <rect class="team__host" x="20" y="96" width="620" height="588" rx="18"/>
-                            <text class="team__label" x="40" y="123">Central · Windows</text>
-                            <rect class="team__host" x="790" y="236" width="190" height="170" rx="18"/>
-                            <text class="team__label" x="808" y="263">DL560 · Linux</text>
-                            <rect class="team__host" x="790" y="456" width="190" height="170" rx="18"/>
-                            <text class="team__label" x="808" y="483">Mac · macOS</text>
-
-                            <!-- the two teams -->
-                            <rect class="team__panel" x="36" y="268" width="285" height="400" rx="14"/>
-                            <rect class="team__panel" x="339" y="268" width="285" height="400" rx="14"/>
-
-                            <!-- mail between standing sessions -->
-                            <path class="team__mail" d="M330,70 V136 M330,184 V210 M270,184 L190,284 M390,184 L470,284 M290,254 L240,284 M370,254 L420,284 M258.5,309 H401.5 M150,334 L112,385 M207,334 L245,385 M453,334 L415,385 M510,334 L548,385"/>
-
-                            <!-- what crosses a machine boundary -->
-                            <path class="team__cross" marker-end="url(#team-arrow)" d="M648,308 H780"/>
-                            <path class="team__cross" marker-end="url(#team-arrow)" d="M782,336 H650"/>
-                            <text class="team__flow" x="715" y="284">test request,</text>
-                            <text class="team__flow" x="715" y="299">exact commit</text>
-                            <text class="team__flow" x="715" y="356">results</text>
-                            <path class="team__cross" marker-end="url(#team-arrow)" d="M648,528 H780"/>
-                            <path class="team__cross" marker-end="url(#team-arrow)" d="M782,556 H650"/>
-                            <text class="team__flow" x="715" y="504">test request,</text>
-                            <text class="team__flow" x="715" y="519">exact commit</text>
-                            <text class="team__flow" x="715" y="576">results</text>
-
-                            <!-- the person and the sessions shared by both teams -->
-                            <rect class="team__person" x="255" y="24" width="150" height="46" rx="23"/>
-                            <text class="team__t team__t--ink" x="330" y="53">The person</text>
-                            <rect class="team__node" x="245" y="136" width="170" height="48" rx="10"/>
-                            <text class="team__t" x="330" y="157">Assistant</text>
-                            <text class="team__s" x="330" y="173">channel to the person</text>
-                            <rect class="team__node" x="275" y="210" width="110" height="44" rx="10"/>
-                            <text class="team__t" x="330" y="229">Consultant</text>
-                            <text class="team__s" x="330" y="244">Kimi</text>
-
-                            <!-- Engram team -->
-                            <rect class="team__lead" x="98.5" y="284" width="160" height="50" rx="10"/>
-                            <text class="team__t team__t--ink" x="178.5" y="306">Coordinator</text>
-                            <text class="team__s team__s--ink" x="178.5" y="322">Engram team</text>
-                            <rect class="team__node team__node--back" x="52.5" y="379" width="124" height="50" rx="10"/>
-                            <rect class="team__node" x="46.5" y="385" width="124" height="50" rx="10"/>
-                            <text class="team__t" x="108.5" y="407">Coders</text>
-                            <text class="team__s" x="108.5" y="423">a worktree each</text>
-                            <rect class="team__node" x="186.5" y="385" width="124" height="50" rx="10"/>
-                            <text class="team__t" x="248.5" y="407">Integrator</text>
-                            <text class="team__s" x="248.5" y="423">lands and installs</text>
-                            <rect class="team__temp" x="46.5" y="470" width="264" height="180" rx="12"/>
-                            <text class="team__label team__label--mid" x="178.5" y="495">Created for one task</text>
-                            <rect class="team__node team__node--task team__node--back" x="64.5" y="512" width="114" height="50" rx="10"/>
-                            <rect class="team__node team__node--task" x="58.5" y="518" width="114" height="50" rx="10"/>
-                            <text class="team__t" x="115.5" y="540">Reviewers</text>
-                            <text class="team__s" x="115.5" y="556">two vendors</text>
-                            <rect class="team__node team__node--task" x="184.5" y="518" width="114" height="50" rx="10"/>
-                            <text class="team__t" x="241.5" y="540">Evaluator</text>
-                            <text class="team__s" x="241.5" y="556">wrote no code</text>
-                            <text class="team__s" x="178.5" y="604">the result returns to</text>
-                            <text class="team__s" x="178.5" y="620">the session that asked</text>
-
-                            <!-- TermAl team -->
-                            <rect class="team__lead" x="401.5" y="284" width="160" height="50" rx="10"/>
-                            <text class="team__t team__t--ink" x="481.5" y="306">Coordinator</text>
-                            <text class="team__s team__s--ink" x="481.5" y="322">TermAl team</text>
-                            <rect class="team__node team__node--back" x="355.5" y="379" width="124" height="50" rx="10"/>
-                            <rect class="team__node" x="349.5" y="385" width="124" height="50" rx="10"/>
-                            <text class="team__t" x="411.5" y="407">Coders</text>
-                            <text class="team__s" x="411.5" y="423">a worktree each</text>
-                            <rect class="team__node" x="489.5" y="385" width="124" height="50" rx="10"/>
-                            <text class="team__t" x="551.5" y="407">Integrator</text>
-                            <text class="team__s" x="551.5" y="423">lands and installs</text>
-                            <rect class="team__temp" x="349.5" y="470" width="264" height="180" rx="12"/>
-                            <text class="team__label team__label--mid" x="481.5" y="495">Created for one task</text>
-                            <rect class="team__node team__node--task team__node--back" x="367.5" y="512" width="114" height="50" rx="10"/>
-                            <rect class="team__node team__node--task" x="361.5" y="518" width="114" height="50" rx="10"/>
-                            <text class="team__t" x="418.5" y="540">Reviewers</text>
-                            <text class="team__s" x="418.5" y="556">two vendors</text>
-                            <rect class="team__node team__node--task" x="487.5" y="518" width="114" height="50" rx="10"/>
-                            <text class="team__t" x="544.5" y="540">Evaluator</text>
-                            <text class="team__s" x="544.5" y="556">wrote no code</text>
-                            <text class="team__s" x="481.5" y="604">the result returns to</text>
-                            <text class="team__s" x="481.5" y="620">the session that asked</text>
-
-                            <!-- remote machines -->
-                            <rect class="team__node team__node--check" x="815" y="296" width="140" height="52" rx="10"/>
-                            <text class="team__t" x="885" y="319">Test runners</text>
-                            <text class="team__s" x="885" y="335">full and focused runs</text>
-                            <rect class="team__node team__node--check" x="815" y="516" width="140" height="52" rx="10"/>
-                            <text class="team__t" x="885" y="539">Test runners</text>
-                            <text class="team__s" x="885" y="555">full and focused runs</text>
-
-                            <!-- key -->
-                            <path class="team__mail" d="M690,44 H730"/>
-                            <text class="team__key" x="744" y="48">mail between standing sessions</text>
-                            <rect class="team__node team__node--task" x="690" y="62" width="40" height="18" rx="5"/>
-                            <text class="team__key" x="744" y="75">created for one task</text>
-                            <rect class="team__node team__node--check" x="690" y="89" width="40" height="18" rx="5"/>
-                            <text class="team__key" x="744" y="102">runs the tests</text>
-                            <rect class="team__host" x="690" y="116" width="40" height="18" rx="5"/>
-                            <text class="team__key" x="744" y="129">one machine</text>
-                        </svg>
+                <summary>Data, permissions and models</summary>
+                <dl class="team__notes">
+                    <div>
+                        <dt>Data that goes between computers</dt>
+                        <dd>The computers send messages, test requests, Git commits and test results to each other. Installation of the synchronization function continues. This function sends task descriptions and project memory between computers.</dd>
                     </div>
-                    <dl class="team__notes">
-                        <div>
-                            <dt>Crosses a machine boundary</dt>
-                            <dd>Mail, test requests and their results, the exact commit to test, and task text and project memory through sync, which is still being rolled out.</dd>
-                        </div>
-                        <div>
-                            <dt>Stays on one machine</dt>
-                            <dd>Claims, the authority to execute, review and land, worktrees, build output and scratch files.</dd>
-                        </div>
-                    </dl>
-                    <figcaption>Today all coding sessions run on Central. The other two machines run tests. Once task-record sync is complete, coders can run on the other machines too.</figcaption>
-                </figure>
-
+                    <div>
+                        <dt>Data and permissions on each computer</dt>
+                        <dd>Task claims and permissions to do, review or integrate work stay on the local computer. Git worktrees, build files and temporary files also stay on that computer.</dd>
+                    </div>
+                </dl>
                 <div class="prose">
-                    <p>The team draws on models from OpenAI, Anthropic and Moonshot. Two reviewers from different vendors inspect each candidate, and lighter models run builds and tests.</p>
+                    <p>The team uses models from OpenAI, Anthropic and Moonshot. For each commit, the two reviewers use models from different suppliers. Smaller models do builds and tests.</p>
                 </div>
             </details>
         </section>
 
         <section class="case" aria-labelledby="mission-title">
             <div class="prose">
-                <h2 id="mission-title">When the process needs to change</h2>
-                <p>The team also uses this approach to improve its own tools. One example was independent evaluation. The person wanted a way to tell whether a completed task had delivered what was asked. The agents had to work out how to make that judgment reliable.</p>
-                <p>The first design sometimes prevented the agents from working. The person switched evaluation off. The team traced the problem, rebuilt the check and demonstrated that it worked on installed versions before the person switched it back on.</p>
+                <h2 id="mission-title">How the team changed its process</h2>
+                <p>The developer wanted to know if each change did what the team agreed to do. The team added independent evaluation to its tools. For each task, an evaluator examined the evidence. This evaluator did not write the code for that task.</p>
+                <p>With the first design, the agents sometimes could not continue their tasks. The developer stopped the evaluation process. The team found the cause and changed the design. After tests on the installed software gave the correct results, the developer started the evaluation process again.</p>
             </div>
             <details class="technical">
-                <summary>How the team tested independent evaluation</summary>
+                <summary>Tests of the evaluation process</summary>
                 <div class="prose">
-                    <p>A task needed an explicit verdict before it could count as complete. To make that verdict trustworthy, the rebuilt evaluator used the host’s record of what had run and tied its judgment to the source it examined.</p>
-                    <p>The team tested both outcomes. The system accepted an evaluation of the checked source. When the source changed, the earlier verdict could no longer authorize completion. From the first implementation to re-enabling evaluation in both projects took 54 days.</p>
+                    <p>Before the system could record the completion of a task, the evaluator had to record its decision. The evaluator used the record of operations from the host computer. The decision identified the commit that the evaluator examined.</p>
+                    <p>In the first test, the system accepted the decision for that commit. In the second test, the source code changed. The system did not accept the previous decision for the new commit.</p>
+                    <p>The developer started evaluation again in the two projects 54 days after the team made the first version.</p>
                 </div>
             </details>
         </section>
 
         <section aria-labelledby="engineering-title">
             <div class="prose">
-                <h2 id="engineering-title">The work in practice</h2>
-                <p>During one week the teams pursued acceptance evaluation, interface performance, remote prompt delivery and task-record sync in parallel. The interface work began with a simple observation from the person using it. Switching tabs and typing felt slow.</p>
-                <p>The agents traced the lag to the session list, which kept every row on the page. They found a component already in the codebase that could render just the visible rows. The person could discuss the fix with that team while work continued on the other goals.</p>
+                <h2 id="engineering-title">How the team corrected a slow interface</h2>
+                <p>In one week, the teams had four goals. These included independent evaluation and a faster interface. The other goals were to send prompts to remote agents and to synchronize task records.</p>
+                <p>The developer told the team about a delay after keyboard input or a change of tab. The agents found that the interface kept a row for each session on the page. They used a component from the same project to show only the rows that the developer could see. The developer could examine the change with these agents while the other agents continued their tasks.</p>
             </div>
             <details class="technical">
-                <summary>Performance measurements and repository figures</summary>
+                <summary>Test results and repository measurements</summary>
                 <div class="prose">
-                    <p>In a controlled interface test at four times production size, the page went from 142,000 elements to under a thousand. In a separate memory investigation, the team measured an 82% reduction in a synthetic test of its file-notification structure. That test measured only the structure itself.</p>
-                    <p>TermAl, Engram and Phoenix together held 1.57 million lines of source and tests in the November snapshot. These totals include the earlier stages of development, from prompting individual agents to coordinating teams.</p>
+                    <p>For the interface test, the team used a session list four times the size of the list in production. Before the change, the page contained 142,000 elements. After the change, it contained less than 1,000 elements.</p>
+                    <p>The team also did a synthetic test on the data structure for file notifications. The new structure used 82% less memory than the old structure. The team measured only the memory for that structure.</p>
+                    <p>In November 2026, the TermAl, Engram and Phoenix repositories contained 1.57 million lines of source code and test code. This total includes code from individual agents and from teams of agents.</p>
                 </div>
                 <figure class="sizes">
                     <table>
@@ -351,24 +450,28 @@
                             </tr>
                         </tbody>
                     </table>
-                    <figcaption>Non-blank lines in committed files from the 10 November 2026 snapshots, rounded to the nearest thousand; ratios use the unrounded counts. Tests are counted by where the file lives, plus inline Rust test modules. Documentation includes guides, design notes, READMEs and agent instructions; test fixtures, generated documentation, vendored material and build output are excluded.</figcaption>
+                    <figcaption>
+                        <p>The table gives the number of nonblank lines in each repository on 10 November 2026. The totals include only files in Git commits. The table shows line counts to the nearest 1,000. The team used the full counts to calculate the ratios.</p>
+                        <p>The location of each file identifies test code. The count also includes Rust test modules in source files.</p>
+                        <p>Documentation includes guides, design notes, README files and instructions for agents. The count does not include test fixtures, generated documentation, code from other suppliers and build output.</p>
+                    </figcaption>
                 </figure>
 
                 <div class="prose">
-                    <p>The figures below cover TermAl and Engram together from 11 October to 10 November 2026, as recorded in the 10 November snapshot.</p>
+                    <p>These totals include changes to TermAl and Engram from 11 October to 10 November 2026.</p>
                 </div>
 
                 <dl class="facts">
-                    <div><dt>442</dt><dd>commits landed, about 14 a day</dd></div>
-                    <div><dt>651,000</dt><dd>lines of code added, and 256,000 removed</dd></div>
-                    <div><dt>62%</dt><dd>of the added lines were tests</dd></div>
+                    <div><dt>442</dt><dd>commits, a daily average of approximately 14</dd></div>
+                    <div><dt>651,000</dt><dd>new lines of code. The teams also removed 256,000 lines.</dd></div>
+                    <div><dt>62%</dt><dd>of the new lines contained test code</dd></div>
                 </dl>
             </details>
         </section>
 
         <section class="closing" aria-labelledby="factory-title">
-            <h2 id="factory-title">Where human judgment matters</h2>
-            <p>The person has time to ask whether a proposed design is getting too complicated, change what comes first, or follow a difficult problem all the way through. The rest of the team can keep building while that decision takes shape.</p>
+            <h2 id="factory-title">Decisions that stay with the developer</h2>
+            <p>The developer stays <em>on the loop</em> and can change the order of the goals. If a design has a problem, the developer can examine it with one team. The agents on the other goals continue their tasks.</p>
             <nav class="closing__links" aria-label="Related links">
                 <a href="https://grlap.github.io/TermAl/" target="_blank" rel="noopener">TermAl <span aria-hidden="true">↗</span></a>
                 <a href="https://grlap.github.io/Engram/" target="_blank" rel="noopener">Engram <span aria-hidden="true">↗</span></a>
@@ -380,8 +483,8 @@
     </main>
 
     <footer class="site-footer">
-        <p>Greg Lapinski · Systems foundations for the agentic era</p>
-        <p>Draft · Not published</p>
+        <p>Greg Lapinski</p>
+        <p>Unpublished draft</p>
     </footer>
 </body>
 </html>

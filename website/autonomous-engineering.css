@@ -71,17 +71,17 @@ figure + .prose { margin-top: 44px; }
 .byline { margin-top: 26px; color: var(--muted); font: 600 13px/1.5 var(--mono); }
 .byline span { margin: 0 5px; }
 .defs { position: absolute; width: 0; height: 0; overflow: hidden; }
-.overview { padding: clamp(22px, 3vw, 42px); border: 1px solid var(--line-strong); background: var(--ink-soft); }
+.overview { min-width: 0; padding: clamp(12px, 1.8vw, 26px); border: 1px solid var(--line-strong); background: var(--ink-soft); }
 .overview figcaption { margin: 0 0 24px; color: var(--ice); }
-.overview dl { margin-left: 5px; border-left: 1px solid var(--line-strong); }
-.overview dl > div { position: relative; padding: 0 0 24px 22px; }
-.overview dl > div:last-child { padding-bottom: 0; }
-.overview dt { font-size: 19px; font-weight: 700; line-height: 1.3; }
-.overview dt::before { content: ""; position: absolute; top: 7px; left: -5px; width: 9px; height: 9px; border-radius: 50%; background: var(--ice); }
-.overview dl > div:first-child dt::before { background: var(--signal); }
-.overview dl > div:last-child dt::before { background: var(--lime); }
-.overview dd { margin-top: 5px; color: var(--text); font-size: 16px; line-height: 1.45; }
-.overview__loops svg { display: block; width: 108px; height: 36px; }
+.overview__map { display: block; width: 100%; height: auto; }
+.overview__messages, .overview__advice { fill: none; stroke: var(--ice); stroke-width: 1.7; }
+.overview__advice { stroke: var(--snow); stroke-dasharray: 4 4; }
+.overview__advisor { fill: var(--panel); stroke: var(--snow); stroke-dasharray: 4 4; }
+.overview__name { fill: var(--snow); font-size: 20px; font-weight: 700; text-anchor: middle; }
+.overview__role, .overview__label { fill: var(--text); font-size: 15px; }
+.overview__role { text-anchor: middle; }
+.overview__divider { stroke: var(--line-strong); }
+.overview p { margin-top: 16px; color: var(--muted); font-size: 14px; line-height: 1.5; }
 .mini__ring, .mini__checks { fill: none; stroke-width: 6; }
 .mini__ring { stroke: var(--ice); }
 .mini__checks { stroke: var(--lime); }
@@ -114,6 +114,29 @@ figcaption { margin-top: 16px; color: var(--muted); font-size: 14px; line-height
 .loop__return { fill: none; stroke: var(--signal); stroke-width: 3; }
 .loop__arrow { fill: var(--signal); }
 
+/* Each station shows the same commit on a continuous conveyor. */
+.assembly { margin-top: 32px; padding: clamp(16px, 2.5vw, 32px); border: 1px solid var(--line-strong); background: var(--ink-soft); }
+.assembly__stations { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.assembly__stations li { position: relative; min-width: 0; text-align: center; }
+.assembly__stations svg { display: block; width: 100%; height: 105px; color: var(--ice); }
+.assembly__stations li > div { padding: 0 10px 14px; }
+.assembly__stations li > div::before {
+    content: ""; display: block; height: 12px; margin: 0 -10px 16px;
+    border-block: 2px solid var(--ice);
+    background: radial-gradient(circle, var(--ice) 0 2px, var(--panel) 2.5px 4px, transparent 4.5px) center / 16px 12px repeat-x;
+}
+.assembly__stations li:first-child > div::before { border-left: 2px solid var(--ice); border-radius: 8px 0 0 8px; }
+.assembly__stations li:last-child > div::before { border-right: 2px solid var(--ice); border-radius: 0 8px 8px 0; }
+.assembly__stations li + li::before { content: "→"; position: absolute; left: 0; top: 72px; color: var(--ice); transform: translateX(-50%); }
+.assembly__tool { fill: none; stroke: var(--lime); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.assembly__stations h3 { font-size: clamp(17px, 1.55vw, 21px); line-height: 1.25; }
+.assembly__stations p { margin-top: 6px; color: var(--text); font-size: 15px; line-height: 1.45; }
+.assembly__ready h3, .assembly__stations .assembly__ready svg { color: var(--lime); }
+.assembly__return { display: block; width: 100%; height: 34px; fill: none; stroke: var(--signal); }
+.assembly__return path { stroke-width: 1.6; vector-effect: non-scaling-stroke; }
+.assembly figcaption { max-width: 72ch; margin: 10px auto 0; text-align: center; }
+.assembly figcaption strong { color: var(--signal); }
+
 /* Case study and supporting technical material */
 .case { padding: clamp(24px, 4vw, 52px); border-top: 2px solid var(--lime); background: var(--ink-soft); }
 .technical { margin-top: 24px; border-block: 1px solid var(--line-strong); }
@@ -122,7 +145,6 @@ figcaption { margin-top: 16px; color: var(--muted); font-size: 14px; line-height
 .technical summary:hover { color: var(--ice); }
 .technical[open] { padding-bottom: 24px; }
 .technical[open] > summary { margin-bottom: 16px; }
-.technical .team { margin-top: 0; }
 
 .facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: var(--measure); margin-top: 30px; border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line); }
 .facts > div { padding: 20px 18px 22px 0; }
@@ -185,6 +207,14 @@ figcaption { margin-top: 16px; color: var(--muted); font-size: 14px; line-height
     .hero { gap: 28px; padding: 52px 0; }
     .loop__frame { grid-template-columns: 1fr; gap: 26px; }
     .loop__ring { max-width: 520px; margin: 0 auto; }
+    .assembly__stations { grid-template-columns: 1fr; }
+    .assembly__stations li { display: grid; grid-template-columns: clamp(76px, 19vw, 124px) 1fr; align-items: center; gap: 18px; text-align: left; }
+    .assembly__stations li + li { margin-top: 16px; }
+    .assembly__stations svg { height: auto; border-bottom: 3px double var(--ice); }
+    .assembly__stations li > div { padding: 0; }
+    .assembly__stations li > div::before, .assembly__return { display: none; }
+    .assembly__stations li + li::before { content: "↓"; top: -16px; left: clamp(38px, 9.5vw, 62px); line-height: 1; }
+    .assembly figcaption { margin: 22px 0 0; padding: 12px 0 0 12px; border-top: 1px solid var(--signal); border-left: 2px solid var(--signal); text-align: left; }
 }
 @media (max-width: 700px) {
     :root { --page: calc(100vw - 40px); }
