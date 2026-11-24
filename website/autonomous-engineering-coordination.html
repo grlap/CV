@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#07111d">
+    <meta name="color-scheme" content="dark">
+    <meta name="robots" content="noindex,nofollow,noarchive">
+    <meta name="author" content="Grzegorz (Greg) Lapinski">
+    <meta name="description" content="Inside a round-the-clock software factory, a missed handoff stalls a review. A diagram and a TLA+ trace show where the decision went missing.">
+    <title>The review that could wait forever · Greg Lapinski</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="autonomous-engineering.css">
+</head>
+<body>
+    <a class="skip-link" href="#article">Skip to the article</a>
+    <header class="site-header">
+        <a class="brand" href="index.html" aria-label="Greg Lapinski, portfolio home"><span class="brand__mark">GL</span><span>Greg Lapinski</span></a>
+        <a class="back-link" href="autonomous-engineering-blog.html">← All articles</a>
+    </header>
+    <main>
+    <article id="article">
+        <header class="hero">
+            <div>
+                <p class="kicker">Autonomous engineering · Agent coordination</p>
+                <h1>The review that <span>could wait forever</span></h1>
+                <p class="standfirst">Two agents finished a code review. The scheduler freed their slot. The agent that requested the review went to sleep waiting for a decision. Nobody had sent the question to the agent assigned to answer it.</p>
+                <p class="byline">Greg Lapinski · November 2026</p>
+            </div>
+            <figure class="overview case-map" id="review-handoff">
+                <figcaption>Where the review stopped</figcaption>
+                <svg class="overview__map" viewBox="0 0 370 304" role="img" aria-labelledby="review-map-title review-map-desc">
+                    <title id="review-map-title">A missing message in the old procedure and the corrected route</title>
+                    <desc id="review-map-desc">The lead told the scheduler that the review was over. The decision owner never received the finding. With the revised rule, the lead sends the finding to the owner, reads the ruling and starts the next round.</desc>
+                    <defs>
+                        <marker id="review-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path fill="var(--ice)" d="M0 0L10 5L0 10Z"/></marker>
+                    </defs>
+                    <g class="case-map__roles"><text x="62" y="22">Review lead</text><text x="295" y="22">Scheduler</text></g>
+                    <path class="case-map__sent" d="M62 53H295" marker-end="url(#review-arrow)"/>
+                    <text class="case-map__msg" x="177" y="46">Review finished</text>
+                    <g class="case-map__roles"><text x="62" y="93">Review lead</text><text x="295" y="93">Decision owner</text></g>
+                    <path class="case-map__missing" d="M62 128h103m22 0h108"/>
+                    <path class="case-map__cross" d="m170 122 12 12m0-12-12 12"/>
+                    <text class="case-map__msg" x="177" y="117">Finding never sent</text>
+                    <path class="overview__divider" d="M8 151h354"/>
+                    <text class="case-map__fix" x="8" y="174">Revised handoff</text>
+                    <g class="case-map__roles"><text x="62" y="200">Review lead</text><text x="295" y="200">Decision owner</text></g>
+                    <path class="case-map__sent" d="M62 233H295" marker-end="url(#review-arrow)"/>
+                    <path class="case-map__sent" d="M295 270H62" marker-end="url(#review-arrow)"/>
+                    <text class="case-map__msg" x="177" y="226">Send finding</text>
+                    <text class="case-map__msg" x="177" y="263">Return ruling</text>
+                    <text class="case-map__fix" x="8" y="296">Lead starts next round</text>
+                </svg>
+                <p>The review lead called the reviewers. The scheduler can give their slot to another job. Only the decision owner can answer the question they raised.</p>
+            </figure>
+        </header>
+
+        <section id="coordination" aria-labelledby="coordination-title">
+            <div class="prose">
+                <h2 id="coordination-title">Who was supposed to act next?</h2>
+                <p>In this software factory, an agent can end its turn while other agents check its work. TermAl runs their sessions. Engram keeps the task record so the work can continue across turns. The agent that requests a review is the <b>review lead</b>. In the model, TermAl wakes the lead when both reviewers and the evaluator finish. That wake tells the lead to collect their results.</p>
+                <p>In one review, the reviewers raised a question outside the lead’s authority. The lead recorded who could decide it and told the scheduler that the review was over. The scheduler freed the slot for the next job.</p>
+                <p>At that point the lead is waiting for a reply. The person or agent with authority to decide has an empty inbox. Every message that anyone sent can arrive, and the job can still sit there all night.</p>
+            </div>
+
+            <div class="prose">
+                <h3>How to put a missed conversation into TLA+</h3>
+                <p>The TLA+ model records which messages exist, which agents are awake and what each agent is waiting for. TLC explores the orders in which the agents and the host can act. These three lines give each message a sender, a recipient, a purpose and a review round.</p>
+                <pre class="handoff-code"><code>ENDP(r) == &lt;&lt;"P", "S", "END", r&gt;&gt;
+FIND(r) == &lt;&lt;"P", "D", "FINDING", r&gt;&gt;
+RUL(r) == &lt;&lt;"D", "P", "RULING", r&gt;&gt;</code></pre>
+                <p><code>P</code> is the review lead (the parent of the review sessions), <code>S</code> the scheduler and <code>D</code> the decision owner. Follow the recipients. Sending <code>END</code> tells <code>S</code> it can schedule more work. Only <code>FINDING</code> tells <code>D</code> what needs a ruling.</p>
+                <pre class="handoff-code"><code>RulingReachesParent == (pP = "waitRuling") ~&gt; (pP = "start")</code></pre>
+                <p>Read <code>~&gt;</code> as “eventually leads to.” Every time the lead enters <code>waitRuling</code>, it must eventually reach the start of the next round. The team replayed the procedure from the stalled review in a model with two rounds, no crashes and no lost notifications. TLC found a counterexample.</p>
+                <ol class="trace-list" aria-label="The counterexample in three steps">
+                    <li><b>The lead sends END.</b> It starts waiting for a ruling. Its mailbox record shows no outgoing finding.</li>
+                    <li><b>The scheduler reads END.</b> It frees the review slot. The lead ends its turn. The decision owner has received nothing.</li>
+                    <li><b>Another job uses the slot.</b> That job runs and finishes. The first review still has no agent preparing a reply.</li>
+                </ol>
+                <h3>The change to the rulebook</h3>
+                <p>The implementing agent fixes an undisputed issue within its scope immediately. If an open finding of medium severity or higher needs a decision, falls outside that scope or is disputed, the lead sends it directly to the decision owner. The lead records which reply it needs, for which round, and who must wake it.</p>
+                <p>In the corrected trace the owner reads the finding and sends a ruling back. The lead reads that ruling and starts round two. The scheduler can give the released slot to the next named waiter while the decision is pending.</p>
+            </div>
+        </section>
+
+        <section class="prose" aria-labelledby="mailboxes-title">
+            <h2 id="mailboxes-title">Which mailbox did the wake open?</h2>
+            <p>The first failure needed no lost messages. A second case exposed an error in the model itself. An early version gave each agent one inbox. TermAl keeps a separate mailbox for each pair of participants. A notification identifies just one of those mailboxes.</p>
+            <figure class="mailbox-map">
+                <figcaption>One scheduler, two conversations</figcaption>
+                <div><strong>Review lead → Scheduler</strong><span>Request a slot</span><b>Wake lost · request still stored</b></div>
+                <div><strong>Worker → Scheduler</strong><span>Request a slot</span><b>Wake arrives · worker gets the slot</b></div>
+            </figure>
+            <p>In this trace, the scheduler wakes, reads the worker’s request and grants it. The lead’s earlier request stays in the closed mailbox. Even after the worker finishes, the scheduler can go back to sleep with the lead still waiting.</p>
+            <pre class="handoff-code"><code>CanRead(k) == mst[k] \in Unread /\ awake[To(k)] /\ Pair(k) \in opened[To(k)]</code></pre>
+            <p>Read the three conditions from left to right. The message must be unread. Its recipient must be awake. The mailbox shared with its sender must be open. A send receipt confirms storage. An acknowledgement records a separate step after reading. Evidence that the job ran comes from its result.</p>
+            <p>A second trace shows how recovery can work. An awake coordinator sends the scheduler a new message that names the original mailbox and request. The scheduler follows that reference, reads the original request once and grants the slot. If nobody wakes the coordinator, the model marks the wait as stalled. That mark records the failure for analysis. It does not wake a sleeping agent.</p>
+            <details class="technical">
+                <summary>What survives a retry or a crash?</summary>
+                <p>On a retry the lead recovers the existing review sessions and their results. Starting new reviewers would repeat work on the same version. If a worker crashes after producing a result, an awake coordinator can hand the run to a named replacement. Once woken, the replacement takes sole ownership, recovers the result and tells the scheduler to release the slot.</p>
+                <p>A crash also closes the agent’s open mailboxes. In version 9, when the review lead reads a recovery message, it also opens the mailbox of the agent named in its recorded wait. This makes an unread slot grant in that mailbox visible again. Before ending a turn voluntarily, an agent must read the messages in its open mailboxes and acknowledge those it read.</p>
+            </details>
+        </section>
+
+        <section class="prose" aria-labelledby="evaluation-title">
+            <h2 id="evaluation-title">Who requests the evaluation after the last check?</h2>
+            <p>In a separate incident, a worker finished its last required check, wrote “next turn” and went to sleep. For hours, nobody requested an independent evaluation. No event had been arranged to start that next turn.</p>
+            <p>The original model started the evaluator too early to expose this gap. An extension gave the worker a new state between the last check and the request for evaluation. TLC could now replay the mistake in eleven states. At the last step the worker was asleep, still owed a request and had named nobody to wake it.</p>
+            <p>The extension checks two ways out. The host can wake the worker when the last check settles. Or the worker can send <code>READY</code> to its coordinator, who wakes it in reply. In both traces the worker uses the existing test result to request the evaluation. The trace ends at that request.</p>
+        </section>
+
+        <section class="prose" aria-labelledby="bounds-title">
+            <h2 id="bounds-title">How far did the checks go?</h2>
+            <p>The final coordination model covered up to two review rounds, one shared slot and one worker competing with the review lead for it. With reliable delivery and the assumption that agents eventually take steps that stay available, the corrected handoffs made progress. With one lost wake or one crash, TLC checked a narrower promise. A wait must eventually end or have an explicit reason for the stall.</p>
+            <details class="technical">
+                <summary>Bounded results and the unfinished two-fault check</summary>
+                <ul class="run-results">
+                    <li><b>Safety.</b> TLC checked 81,917,317 distinct states. All safety checks held, including one owner per run and release of the slot before the next launch.</li>
+                    <li><b>Progress.</b> With reliable delivery, all six progress properties held across 965,984 states. The check for an explicit stall passed with one lost wake (10,624,032 states) and, separately, with one crash (15,126,615 states).</li>
+                    <li><b>One lost wake plus one crash.</b> The run that allowed both faults in either round timed out. With both faults restricted to round two, TLC finished exploring 50,607,200 states and all safety checks held. Time ran out during the final check for an explicit stall. That question remains open.</li>
+                    <li><b>Evaluation request.</b> The separate extension passed with a coordinator wake (49,027 states) and with a host wake (19,849 states). It covered one round with no medium-severity finding, crash or lost wake. Its three new messages omit per-pair mailboxes and acknowledgements. The evaluation itself is outside the model.</li>
+                </ul>
+            </details>
+        </section>
+        <nav class="series-link prose" aria-label="Related article">
+            <a href="autonomous-engineering-factory.html">Inside a 24/7 software factory →</a>
+        </nav>
+    </article>
+    </main>
+    <footer class="site-footer"><p>Greg Lapinski</p><p>Unpublished draft</p></footer>
+</body>
+</html>

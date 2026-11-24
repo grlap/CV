@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark">
+    <meta name="robots" content="noindex,nofollow,noarchive">
+    <meta name="description" content="What a bounded TLA+ model showed about recovery and convergence when two Engram hosts exchange task records through Git.">
+    <title>When two hosts agree on a task · Greg Lapinski</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="autonomous-engineering.css">
+</head>
+<body>
+    <a class="skip-link" href="#article">Skip to the article</a>
+    <header class="site-header">
+        <a class="brand" href="index.html" aria-label="Greg Lapinski, portfolio home"><span class="brand__mark">GL</span><span>Greg Lapinski</span></a>
+        <a class="back-link" href="autonomous-engineering-coordination.html#review-handoff">← The review handoff diagram</a>
+    </header>
+    <main>
+        <article id="article">
+            <header class="hero">
+                <div>
+                    <p class="kicker"><a href="autonomous-engineering-blog.html">Autonomous Engineering Blog</a> · Task synchronization</p>
+                    <h1>When two hosts <span>agree on a task</span></h1>
+                    <p class="standfirst">An agent picks up a task on one computer while another agent edits its instructions on a second machine. By morning there are two versions. Which instructions should the next agent follow?</p>
+                    <p class="factory-tools">Each computer keeps a local task record in <b>Engram</b>, the factory’s work log. Agents exchange records through Git. An export writes local decisions to files. An import reads another computer’s changes back into the work log.</p>
+                    <p class="byline">Greg Lapinski · November 2026</p>
+                </div>
+                <figure class="overview">
+                    <figcaption>Where the two versions meet</figcaption>
+                    <svg class="overview__map" viewBox="0 0 360 203" role="img" aria-labelledby="exchange-title exchange-desc">
+                        <title id="exchange-title">B stops the incoming edit before it overwrites local work</title>
+                        <desc id="exchange-desc">A commits its task edit to Git. B receives that commit but also has an uncommitted local edit to the same instructions. B stops the import at its store and names the conflicting task.</desc>
+                        <defs><marker id="sync-tip" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10Z" fill="var(--ice)"/></marker></defs>
+                        <g class="case-map__roles"><text x="75" y="22">Machine A</text><text x="278" y="22">Machine B</text></g>
+                        <rect class="team__node" x="8" y="35" width="132" height="42" rx="5"/>
+                        <rect class="team__node" x="206" y="35" width="145" height="42" rx="5"/>
+                        <text class="overview__role" x="74" y="61">A’s commit</text><text class="overview__role" x="278" y="61">Fetched commit</text>
+                        <path class="case-map__sent" d="M140 56h62" marker-end="url(#sync-tip)"/>
+                        <path class="case-map__missing" d="M278 78v26m0 22v21"/>
+                        <path class="case-map__cross" d="m272 108 12 12m0-12-12 12"/>
+                        <text class="case-map__msg" x="157" y="118">Import stops here</text>
+                        <rect class="team__node" x="206" y="148" width="145" height="42" rx="5"/>
+                        <text class="overview__role" x="278" y="174">B’s local edit</text>
+                    </svg>
+                    <p>Git delivered the commit. The conflict appears one step later, when the agent tries to apply it to B’s task record.</p>
+                </figure>
+            </header>
+
+            <section aria-labelledby="question">
+                <div class="prose">
+                    <h2 id="question">Both agents had work worth keeping</h2>
+                    <p>Imagine the task is to test a database restore. Agent A adds a check for missing files. On a second machine, agent B changes which backup to restore. Both edit the same task instructions. A commits its edit and sends it. B still has an edit in its local work log.</p>
+                </div>
+                <figure class="sync-trace">
+                    <figcaption>Where the exchange stops</figcaption>
+                    <ol class="trace-list">
+                        <li><b>Machine A → shared Git branch</b> The commit carries A’s version of the task. B’s edit exists only on B.</li>
+                        <li><b>Shared Git branch → machine B</b> B receives the commit. Importing A’s version over the local record would erase B’s decision.</li>
+                        <li><b>Import stops at the task record</b> The importer names the conflicting task and preserves B’s edit. Retrying returns the same conflict.</li>
+                    </ol>
+                </figure>
+                <div class="prose">
+                    <p>The agent can set the local work aside and merge the two edits explicitly. The working rule is to export and commit local planning before integrating incoming changes. That gives each decision a version the agents can recover.</p>
+                </div>
+            </section>
+            <section class="prose" aria-labelledby="exchange">
+                <h2 id="exchange">Can a retry report an old error?</h2>
+                <p>The team described the exchange in TLA+, a language for specifying the steps a system can take. TLC, the model checker, tried different orders of edits, commits, crashes and retries. One check asked whether each import that encounters a conflicting edit names the task it refuses to overwrite.</p>
+                <p>Here is the consequence in the model’s <code>ExplicitConflict</code> rule. Read <code>h</code> as the machine doing the import. A prime means the value after the step.</p>
+                <pre class="handoff-code"><code>=&gt; /\ result'[h].kind = "conflict"
+   /\ {t \in Tasks : Diverges(h, t)} \subseteq result'[h].tasks
+   /\ db'[h] = db[h] /\ baseline'[h] = baseline[h] /\ head'[h] = head[h]]_vars</code></pre>
+                <p>Read the three lines in order. The new result must say “conflict.” Its list must include every task with a conflicting edit. The local task store, its comparison point and its sync record must all keep their previous values.</p>
+                <p>An early model remembered the last error. That left a hole in the check. If the first import reported a conflict and the second failed silently, the old error could make both attempts look correct.</p>
+                <ol class="trace-list">
+                    <li><b>First attempt.</b> B refuses the import and reports the conflicting task.</li>
+                    <li><b>Retry.</b> The revised model clears the previous result when a new import starts.</li>
+                    <li><b>Deliberate fault.</b> A test version silently refuses the second import. TLC now catches the missing report even though all the task data survives.</li>
+                </ol>
+                <p>This change fixed a blind spot in the specification. The deliberately faulty model let the team test whether its check could tell the two attempts apart.</p>
+            </section>
+            <section class="prose" aria-labelledby="bounds">
+                <h2 id="bounds">When the two stores converged</h2>
+                <p>After the last edit, both hosts reached the same commit and task content in the two convergence checks. The order of work mattered. Each agent waited for a successful export, then committed local changes before integrating remote work. It made no new planning edit between a merge and its import. The first publisher also confirmed its first export before integrating later commits.</p>
+                <pre class="handoff-code"><code>EventuallyConverged == &lt;&gt;[]Converged</code></pre>
+                <p>Read <code>&lt;&gt;[]</code> as “eventually, and from then on.” The check asks whether, after edits stop, every copy can reach the same committed work and stay there, with no changes left to send.</p>
+                <p>These checks assumed that every continuously available sync or Git action eventually ran. They covered two hosts, one task, up to two local edits and six commits. The ordinary run allowed one crash outside the brief interval when an export replaces its recovery record. The first-exchange run allowed none. Both excluded failed database commits, external file edits and claims. The study found no new data-loss defect under these assumptions. Agreement outside the checked bounds remains an open question.</p>
+                <details class="technical">
+                    <summary>Model setup, corrections and coverage limits</summary>
+                    <p>TLC ran 25 configurations on version 11. The ordinary convergence run explored 163,223 distinct states. The first-exchange run explored 289,959. Other runs deliberately triggered known failures or reached a particular step, such as a retry after the database had committed an import.</p>
+                    <p>The model represents task files as tokens and database transactions as atomic steps. One safety check combined two tasks, one claim and one crash. It covered the release of a held change. Convergence after a release remains untested. The model also excludes memory exchange, notes, task removal and complete imports with a saved comparison basis.</p>
+                    <p>Two early failures exposed errors in the model. It first overlooked work due for export before the first commit. It also counted an import that changed nothing against the operation limit. The team corrected both errors before the final runs.</p>
+                </details>
+                <details class="technical">
+                    <summary>Other handoffs checked in the study</summary>
+                    <p><b>Interrupted export.</b> A host can keep all its planning edits and lose the record that confirms a completed export. Recovery can require rebuilding that record. If the interruption leaves files on disk before the export reports success, committing them too soon can leave the next import stuck.</p>
+                    <p><b>First exchange.</b> A host making its first export must confirm its own commit before it takes later changes. Otherwise it can need the first export again as an explicit point of comparison.</p>
+                    <p><b>Two writers in one folder.</b> A separate run allowed a second writer to edit a file during an export. Its edit could be overwritten. The ordinary procedure gives one writer control of the folder for the operation.</p>
+                    <p><b>Task identity and ownership.</b> A new task kept the same local record after a retry. A deliberate one-for-one replacement defeated a record count but failed the identity check. An active claim held back incoming work until release. Dry runs left durable records unchanged in the configurations that checked them.</p>
+                </details>
+                <details class="technical">
+                    <summary>What a separate review of the code found</summary>
+                    <p>In one import path, the number of Git processes grows with the number of changed files and the history the importer examines. A second finding concerns recovery advice. When a Git query fails, the importer can suggest restoring the branch even though it has not established a history mismatch. Reviewers found both issues by reading the code.</p>
+                </details>
+                <p class="series-link"><a href="autonomous-engineering-coordination.html#review-handoff">See the coordination diagram and TLA+ from the stalled code review →</a></p>
+            </section>
+        </article>
+    </main>
+    <footer class="site-footer"><p>Greg Lapinski</p><p>Unpublished draft</p></footer>
+</body>
+</html>

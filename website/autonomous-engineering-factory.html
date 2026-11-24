@@ -7,8 +7,8 @@
     <meta name="color-scheme" content="dark">
     <meta name="robots" content="noindex,nofollow,noarchive">
     <meta name="author" content="Grzegorz (Greg) Lapinski">
-    <meta name="description" content="A developer gives goals to a team of software agents. The agents select tasks, write code and do checks on each change.">
-    <title>How a team of agents writes software · Greg Lapinski</title>
+    <meta name="description" content="How a developer directs teams of coding agents that implement, review, test and integrate software around the clock.">
+    <title>Inside a 24/7 software factory · Greg Lapinski</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="autonomous-engineering.css">
 </head>
@@ -47,9 +47,10 @@
     <article id="article">
         <header class="hero">
             <div>
-                <p class="kicker">Autonomous engineering</p>
-                <h1>How a team of agents <span>writes software</span></h1>
-                <p class="standfirst">A developer gives the teams their goals and the rules for their work. Each team has a coordinator. The agents can continue work on different goals while the developer examines one design.</p>
+                <p class="kicker"><a href="autonomous-engineering-blog.html">Autonomous Engineering Blog</a></p>
+                <h1>Inside a 24/7 <span>software factory</span></h1>
+                <p class="standfirst">The developer can leave for the night while one agent writes a change, two others review it, and another runs the tests. What keeps a change moving when the agent that needs to act next is asleep?</p>
+                <p class="factory-tools"><b>Engram</b> is the shared work record. It keeps the task, its owner and the evidence for a decision. <b>TermAl</b> runs the agents and delivers the messages that bring them back to work. The agents use both tools to develop the tools themselves.</p>
                 <p class="byline">Greg Lapinski <span aria-hidden="true">·</span> November 2026</p>
             </div>
             <figure class="overview">
@@ -105,9 +106,11 @@
         </header>
 
         <section class="prose" aria-labelledby="role-title">
-            <h2 id="role-title">How a goal becomes a task</h2>
+            <h2 id="role-title">Who keeps the work moving overnight?</h2>
             <p>The developer usually gives a goal to the Assistant. The Assistant sends it to the coordinator for that project. The coordinator divides the work into tasks and selects a coder for each task. If the work involves two projects, the coordinators speak directly to each other.</p>
-            <p>Each team has coders and an integrator. Reviewers and an evaluator join for one task. If a proposal needs another opinion, the Consultant can examine it independently.</p>
+            <p>A coder can finish a turn while its change is under review. The task record identifies the version being reviewed. The host keeps the reviewers’ results and wakes the agent waiting for them. If that agent resumes after an interruption, it can recover the existing review and its results. Starting another pair of reviewers could give two teams responsibility for the same decision.</p>
+            <p id="coordination">One review stalled after both reviewers finished. Follow the messages in <a id="review-handoff" href="autonomous-engineering-coordination.html">The review that could wait forever</a>.</p>
+            <p>Each team has an integrator who puts the checked version on the main branch. An evaluator compares the evidence with the original request. The Consultant gives a second opinion when a design needs one.</p>
             <p>When a coordinator has a result or needs a decision, the Assistant takes the report or question back to the developer. The developer can also speak directly to the agent responsible for a task. The other teams can continue their work during that discussion.</p>
         </section>
 
@@ -241,6 +244,13 @@
             </figure>
         </section>
 
+        <section class="prose" aria-labelledby="prepare-ahead">
+            <h2 id="prepare-ahead">What the next coder can start now</h2>
+            <p>While one change runs through the full test suite, another coder can prepare the next one. Each package identifies the Git commit and the exact files it contains. It includes tests that exercise the change and a record of which checks are still due. The coordinator names the owner of the package and who will notify that owner when the next result arrives.</p>
+            <p>In one shift, the Engram coordinator reported four such candidates behind a change undergoing its full test run. One had cleared both reviewers. Another had passed its Mac tests and was waiting for results from other machines. All three coders already had work, so the coordinator stopped at four. A longer queue would give the main branch more time to move ahead of the prepared changes.</p>
+            <p>The TermAl coordinator described a different starting point. A logging change was waiting for a test, and two later tasks were still on the list. The coordinator assigned process limits to one coder and the connection to Engram to another. Each could send a short design for review and develop the change in a separate Git worktree. Only the edits that connected those pieces in <code>main.rs</code> needed the same integrator, one at a time.</p>
+        </section>
+
         <section aria-labelledby="team-title">
             <div class="prose">
                 <h2 id="team-title">How the work continues between sessions</h2>
@@ -358,121 +368,29 @@
                         <text class="team__key" x="744" y="129">one computer</text>
                     </svg>
                 </div>
-                <figcaption>All coder sessions run on the computer named Central. The other two computers do tests. When the team completes synchronization of task records, coders can also use the other computers.</figcaption>
+                <figcaption>In this setup the coders work on Central, a Windows machine. Linux and Mac machines receive test requests and return results. Moving a coding task to another machine also requires transferring its work record.</figcaption>
             </figure>
 
             <details class="technical">
-                <summary>Data, permissions and models</summary>
+                <summary>What travels between machines?</summary>
                 <dl class="team__notes">
                     <div>
                         <dt>Data that goes between computers</dt>
-                        <dd>The computers send messages, test requests, Git commits and test results to each other. Installation of the synchronization function continues. This function sends task descriptions and project memory between computers.</dd>
+                        <dd>A remote test request identifies the code to test. The runner returns its result to the agent that requested it. Moving the task record is a separate operation, described in <a href="autonomous-engineering-task-sync.html">the study of two machines editing one task</a>.</dd>
                     </div>
                     <div>
                         <dt>Data and permissions on each computer</dt>
                         <dd>Task claims and permissions to do, review or integrate work stay on the local computer. Git worktrees, build files and temporary files also stay on that computer.</dd>
                     </div>
                 </dl>
-                <div class="prose">
-                    <p>The team uses models from OpenAI, Anthropic and Moonshot. For each commit, the two reviewers use models from different suppliers. Smaller models do builds and tests.</p>
-                </div>
-            </details>
-        </section>
-
-        <section class="case" aria-labelledby="mission-title">
-            <div class="prose">
-                <h2 id="mission-title">How the team changed its process</h2>
-                <p>The developer wanted to know if each change did what the team agreed to do. The team added independent evaluation to its tools. For each task, an evaluator examined the evidence. This evaluator did not write the code for that task.</p>
-                <p>With the first design, the agents sometimes could not continue their tasks. The developer stopped the evaluation process. The team found the cause and changed the design. After tests on the installed software gave the correct results, the developer started the evaluation process again.</p>
-            </div>
-            <details class="technical">
-                <summary>Tests of the evaluation process</summary>
-                <div class="prose">
-                    <p>Before the system could record the completion of a task, the evaluator had to record its decision. The evaluator used the record of operations from the host computer. The decision identified the commit that the evaluator examined.</p>
-                    <p>In the first test, the system accepted the decision for that commit. In the second test, the source code changed. The system did not accept the previous decision for the new commit.</p>
-                    <p>The developer started evaluation again in the two projects 54 days after the team made the first version.</p>
-                </div>
-            </details>
-        </section>
-
-        <section aria-labelledby="engineering-title">
-            <div class="prose">
-                <h2 id="engineering-title">How the team corrected a slow interface</h2>
-                <p>In one week, the teams had four goals. These included independent evaluation and a faster interface. The other goals were to send prompts to remote agents and to synchronize task records.</p>
-                <p>The developer told the team about a delay after keyboard input or a change of tab. The agents found that the interface kept a row for each session on the page. They used a component from the same project to show only the rows that the developer could see. The developer could examine the change with these agents while the other agents continued their tasks.</p>
-            </div>
-            <details class="technical">
-                <summary>Test results and repository measurements</summary>
-                <div class="prose">
-                    <p>For the interface test, the team used a session list four times the size of the list in production. Before the change, the page contained 142,000 elements. After the change, it contained less than 1,000 elements.</p>
-                    <p>The team also did a synthetic test on the data structure for file notifications. The new structure used 82% less memory than the old structure. The team measured only the memory for that structure.</p>
-                    <p>In November 2026, the TermAl, Engram and Phoenix repositories contained 1.57 million lines of source code and test code. This total includes code from individual agents and from teams of agents.</p>
-                </div>
-                <figure class="sizes">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th scope="col">Project</th>
-                                <th scope="col">Source lines</th>
-                                <th scope="col">Test lines</th>
-                                <th scope="col">Test / source</th>
-                                <th scope="col">Documentation lines</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">TermAl <span>Agent host</span></th>
-                                <td data-label="Source lines">379,000</td>
-                                <td data-label="Test lines">629,000</td>
-                                <td data-label="Test / source">1.66 : 1</td>
-                                <td data-label="Documentation lines">35,000</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Engram <span>Work ledger</span></th>
-                                <td data-label="Source lines">234,000</td>
-                                <td data-label="Test lines">182,000</td>
-                                <td data-label="Test / source">0.78 : 1</td>
-                                <td data-label="Documentation lines">24,000</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Phoenix <span>Source navigation</span></th>
-                                <td data-label="Source lines">72,000</td>
-                                <td data-label="Test lines">72,000</td>
-                                <td data-label="Test / source">0.99 : 1</td>
-                                <td data-label="Documentation lines">7,000</td>
-                            </tr>
-                            <tr class="sizes__total">
-                                <th scope="row">All three</th>
-                                <td data-label="Source lines">686,000</td>
-                                <td data-label="Test lines">883,000</td>
-                                <td data-label="Test / source">1.29 : 1</td>
-                                <td data-label="Documentation lines">66,000</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <figcaption>
-                        <p>The table gives the number of nonblank lines in each repository on 10 November 2026. The totals include only files in Git commits. The table shows line counts to the nearest 1,000. The team used the full counts to calculate the ratios.</p>
-                        <p>The location of each file identifies test code. The count also includes Rust test modules in source files.</p>
-                        <p>Documentation includes guides, design notes, README files and instructions for agents. The count does not include test fixtures, generated documentation, code from other suppliers and build output.</p>
-                    </figcaption>
-                </figure>
-
-                <div class="prose">
-                    <p>These totals include changes to TermAl and Engram from 11 October to 10 November 2026.</p>
-                </div>
-
-                <dl class="facts">
-                    <div><dt>442</dt><dd>commits, a daily average of approximately 14</dd></div>
-                    <div><dt>651,000</dt><dd>new lines of code. The teams also removed 256,000 lines.</dd></div>
-                    <div><dt>62%</dt><dd>of the new lines contained test code</dd></div>
-                </dl>
             </details>
         </section>
 
         <section class="closing" aria-labelledby="factory-title">
             <h2 id="factory-title">Decisions that stay with the developer</h2>
-            <p>The developer stays <em>on the loop</em> and can change the order of the goals. If a design has a problem, the developer can examine it with one team. The agents on the other goals continue their tasks.</p>
+            <p>The developer chooses the goals and can change their order, settle a design question or examine a particular change. A coordinator brings back the decisions that need that authority. The other teams can keep working while one question is open.</p>
             <nav class="closing__links" aria-label="Related links">
+                <a href="autonomous-engineering-task-sync.html">When two hosts agree on a task <span aria-hidden="true">→</span></a>
                 <a href="https://grlap.github.io/TermAl/" target="_blank" rel="noopener">TermAl <span aria-hidden="true">↗</span></a>
                 <a href="https://grlap.github.io/Engram/" target="_blank" rel="noopener">Engram <span aria-hidden="true">↗</span></a>
                 <a href="https://grlap.github.io/PhoenixCodeNav/" target="_blank" rel="noopener">Phoenix <span aria-hidden="true">↗</span></a>
